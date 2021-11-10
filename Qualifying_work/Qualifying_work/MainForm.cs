@@ -155,9 +155,6 @@ namespace Qualifying_work
 				case '9':
 					Btn9_Click(sender, e);
 					break;
-				case '(':
-					
-					break;
 				default:
 					break;
 			}
