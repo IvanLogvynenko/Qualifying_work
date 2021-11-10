@@ -30,9 +30,9 @@ namespace Qualifying_work
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnBackSpace = new System.Windows.Forms.Button();
             this.BtnEnter = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
@@ -204,7 +204,6 @@ namespace Qualifying_work
             // 
             // Btn0
             // 
-            this.Btn0.Enabled = false;
             this.Btn0.Location = new System.Drawing.Point(7, 200);
             this.Btn0.Name = "Btn0";
             this.Btn0.Size = new System.Drawing.Size(85, 40);
@@ -441,23 +440,23 @@ namespace Qualifying_work
             this.pnlProVersion.Controls.Add(this.BtnMinus);
             this.pnlProVersion.Controls.Add(this.BtnSegmentator);
             this.pnlProVersion.Controls.Add(this.BtnMultiply);
-            this.pnlProVersion.Location = new System.Drawing.Point(0, 234);
+            this.pnlProVersion.Location = new System.Drawing.Point(0, 466);
             this.pnlProVersion.Name = "pnlProVersion";
             this.pnlProVersion.Size = new System.Drawing.Size(600, 254);
             this.pnlProVersion.TabIndex = 8;
             // 
             // Chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Chart1.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.Chart1.Legends.Add(legend6);
             this.Chart1.Location = new System.Drawing.Point(0, 0);
             this.Chart1.Name = "Chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.Chart1.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.Chart1.Series.Add(series6);
             this.Chart1.Size = new System.Drawing.Size(600, 475);
             this.Chart1.TabIndex = 10;
             this.Chart1.Text = "chart1";
