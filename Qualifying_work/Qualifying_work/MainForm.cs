@@ -45,6 +45,14 @@ namespace Qualifying_work
 			}
 			catch (StackOverflowException) { }
 			TBFunction.Text = "";
+			Operator.Button_switcher();
+			BtnX.Enabled = true;
+			BtnPlus.Enabled = false;
+			BtnPower.Enabled = false;
+			BtnKoma.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnMultiply.Enabled = false;
+			BtnSegmentator.Enabled = false;
 		}
 		private void Timer1_Tick(object sender, EventArgs e)
 		{
@@ -105,8 +113,8 @@ namespace Qualifying_work
 		#region All buttons
 		private void BtnBackSpace_Click(object sender, EventArgs e)
 		{
-			char Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
 			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
+			char Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
 			Operator.Breakets = 0;
 			foreach (char item in TBFunction.Text)
 			{
@@ -117,11 +125,43 @@ namespace Qualifying_work
 			}
 			switch (Deleted)
 			{
-				case ')':
+				case '0':
+					Btn0_Click(sender, e);
+					break;
+				case '1':
+					Btn1_Click(sender, e);
+					break;
+				case '2':
+					Btn2_Click(sender, e);
+					break;
+				case '3':
+					Btn3_Click(sender, e);
+					break;
+				case '4':
+					Btn4_Click(sender, e);
+					break;
+				case '5':
+					Btn5_Click(sender, e);
+					break;
+				case '6':
+					Btn6_Click(sender, e);
+					break;
+				case '7':
+					Btn7_Click(sender, e);
+					break;
+				case '8':
+					Btn8_Click(sender, e);
+					break;
+				case '9':
+					Btn9_Click(sender, e);
+					break;
+				case '(':
+					
 					break;
 				default:
 					break;
 			}
+			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
 		}
 		private void ShowingBtn_Click(object sender, EventArgs e)
 		{
@@ -361,22 +401,42 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "(";
+			Operator.Button_switcher();
+			BtnX.Enabled = true;
+			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
+			BtnOBracket.Enabled = true;
+			BtnMinus.Enabled = true;
+			BtnKoma.Enabled = true;
 		}
 		private void BtnCBracket_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets--;
 			TBFunction.Text += ")";
+			Operator.Button_switcher(false);
+			BtnCBracket.Enabled = Operator.Breakets != 0;
+			BtnMinus.Enabled = true;
+			BtnPlus.Enabled = true;
+			BtnPower.Enabled = true;
 		}
 		private void BtnSegmentator_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "/(";
-
+			Operator.Button_switcher();
+			BtnX.Enabled = true;
+			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
+			BtnMinus.Enabled = true;
+			BtnKoma.Enabled = true;
 		}
 		private void BtnPower_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "^(";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
+			BtnOBracket.Enabled = true;
+			BtnMinus.Enabled = true;
+			BtnKoma.Enabled = true;
 		}
 		private void BtnMultiply_Click(object sender, EventArgs e)
 		{
@@ -386,10 +446,10 @@ namespace Qualifying_work
 			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
+			BtnMinus.Enabled = true;
 			BtnKoma.Enabled = false;
 		}
 		#endregion
-
 		#endregion
 	}
 }
