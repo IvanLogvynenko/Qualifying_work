@@ -142,7 +142,6 @@ namespace Qualifying_work
 				}
 			}
 		}
-		
 		private void BtnX_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "x";
@@ -151,114 +150,104 @@ namespace Qualifying_work
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			BtnX.Enabled = false;
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnSegmentator.Enabled = false;
 		}
 		#region Numbers
 		private void Btn0_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += '0'.ToString();
-			Operator.Button_switcher();
+			Operator.Button_switcher(); 
+			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			BtnMultiply.Enabled = false;
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
-			BtnX.Enabled = false;
 		}
 		private void BtnKoma_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += ",";
-			Operator.Button_switcher(false);
+			Operator.Button_switcher(); 
+			BtnX.Enabled = false;
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 		}
 		private void Btn1_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "1";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); 
+			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
-			BtnX.Enabled = false;
 		}
 		private void Btn2_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "2";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn3_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "3";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn4_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "4";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn5_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "5";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn6_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "6";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn7_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "7";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn8_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "8";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		private void Btn9_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "9";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
 			BtnX.Enabled = false;
 		}
 		#endregion
@@ -267,7 +256,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Sin(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -277,7 +266,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Cos(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -287,7 +276,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Tg(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -297,7 +286,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Ctg(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -307,7 +296,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Arcsin(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -317,7 +306,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Arccos(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -327,7 +316,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Arctg(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -337,7 +326,7 @@ namespace Qualifying_work
 		{
 			Operator.Breakets++;
 			TBFunction.Text += "Arcctg(";
-			Operator.Button_switcher();
+			Operator.Button_switcher(); BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnCBracket.Enabled = true;
@@ -354,17 +343,19 @@ namespace Qualifying_work
 		{
 			TBFunction.Text += "+";
 			Operator.Button_switcher();
-			Operator.Button_switcher(Operator.Function_Buttons, false);
-			Operator.Button_switcher(Operator.Number_Buttons, true);
-			BtnOBracket.Enabled = false;
-			BtnCBracket.Enabled = false;
-			BtnX.Enabled = false;
+			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
+			BtnX.Enabled = true;
+			BtnOBracket.Enabled = true;
+			BtnKoma.Enabled = false;
 		}
 		private void BtnMinus_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "-";
 			Operator.Button_switcher();
-			Btn0.Enabled = true;
+			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
+			BtnX.Enabled = true;
+			BtnOBracket.Enabled = true;
+			BtnKoma.Enabled = false;
 		}
 		private void BtnOBracket_Click(object sender, EventArgs e)
 		{
@@ -392,6 +383,7 @@ namespace Qualifying_work
 			Operator.Breakets++;
 			TBFunction.Text += "*(";
 			Operator.Button_switcher();
+			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.SpecialSymbols_Buttons, false);
 			BtnOBracket.Enabled = true;
 			BtnKoma.Enabled = false;

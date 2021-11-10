@@ -81,6 +81,7 @@ namespace Qualifying_work
 			{
 				item.Enabled = value;
 			}
+			
 		}
 		public static void Button_switcher()
 		{
