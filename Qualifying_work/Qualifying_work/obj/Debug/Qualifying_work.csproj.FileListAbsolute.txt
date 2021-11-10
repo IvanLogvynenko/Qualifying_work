@@ -8,3 +8,13 @@ D:\мои коды\C#\Qualifying-work\Qualifying_work\Qualifying_work\obj\Debug\
 D:\мои коды\C#\Qualifying-work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.exe
 D:\мои коды\C#\Qualifying-work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.pdb
 D:\мои коды\C#\Qualifying-work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.csproj.AssemblyReference.cache
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\bin\Debug\Qualifying_work.exe.config
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\bin\Debug\Qualifying_work.exe
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\bin\Debug\Qualifying_work.pdb
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.csproj.AssemblyReference.cache
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.MainForm.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.Properties.Resources.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.csproj.GenerateResource.cache
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.csproj.CoreCompileInputs.cache
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.exe
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.pdb

@@ -4,20 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms;
 
 namespace Qualifying_work
 {
 	static class Operator
 	{
-		//basic params
-		public static bool IsPanelOpened { get; set; }
-		public static List<Polynomial> Polynomials { get; set; }
-		//logical params(for background operating)
-		public static bool LaunchingProgram { get; set; }
-		public static bool Renew { get; set; }
-		//chart params
-		public static ChartArea ChartArea { get; set; }
-		//enter params
+		public static List<Polynomial> Polynomials;
+		public static int Breakets;
+		#region button lists
+		public static List<Button> Number_Buttons;
+		public static List<Button> Function_Buttons;
+		public static List<Button> SpecialSymbols_Buttons;
+		#endregion
+		#region logical params(for background operating)
+		public static bool LaunchingProgram;
+		public static bool Renew;
+		public static bool IsPanelOpened;
+		#endregion
+		#region chart params
+		public static ChartArea ChartArea;
+		#endregion
 		public static string BackSpace(string inputText)
 		{
 			char[] chars = inputText.ToCharArray();
@@ -28,7 +35,6 @@ namespace Qualifying_work
 			}
 			return newVariant;
 		}
-		public static int Breakets { get; set; }
 		public static List<Series> SeriesRenew()
 		{
 			List<Series> Return = new List<Series>();
@@ -46,6 +52,50 @@ namespace Qualifying_work
 				Return.Add(series);
 			}
 			return Return;
+		}
+		public static void Button_switcher(List<Button> buttons)
+		{
+			foreach (Button item in buttons)
+			{
+				item.Enabled = Convert.ToBoolean(true);
+			}
+		}
+		public static void Button_switcher(List<Button> buttons, bool value)
+		{
+			foreach (Button item in buttons)
+			{
+				item.Enabled = value;
+			}
+		}
+		public static void Button_switcher(bool value)
+		{
+			foreach (Button item in Function_Buttons)
+			{
+				item.Enabled = value;
+			}
+			foreach (Button item in Number_Buttons)
+			{
+				item.Enabled = value;
+			}
+			foreach (Button item in SpecialSymbols_Buttons)
+			{
+				item.Enabled = value;
+			}
+		}
+		public static void Button_switcher()
+		{
+			foreach (Button item in Function_Buttons)
+			{
+				item.Enabled = true;
+			}
+			foreach (Button item in Number_Buttons)
+			{
+				item.Enabled = true;
+			}
+			foreach (Button item in SpecialSymbols_Buttons)
+			{
+				item.Enabled = true;
+			}
 		}
 	}
 }

@@ -21,33 +21,36 @@ namespace Qualifying_work
 		{
 			Operator.IsPanelOpened = false;
 			Operator.Polynomials = new List<Polynomial>();
+			Operator.Number_Buttons = new List<Button>();
+			Operator.Function_Buttons = new List<Button>();
+			Operator.SpecialSymbols_Buttons = new List<Button>();
 			Operator.LaunchingProgram = true;
 			Operator.Renew = true;
 			Operator.ChartArea = new ChartArea();
 			Operator.Breakets = 0;
-			timer1.Interval = 10;
-			timer1.Start();
+			Timer1.Interval = 10;
+			Timer1.Start();
 		}
-		private void btnEnter_Click(object sender, EventArgs e)
+		private void BtnEnter_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				Polynomial polynomial = new Polynomial(tBFunction.Text);
+				Polynomial polynomial = new Polynomial(TBFunction.Text);
 				Operator.Polynomials.Add(polynomial);
-				chart1.Series.Clear();
+				Chart1.Series.Clear();
 				foreach (Series serie in Operator.SeriesRenew())
 				{
-					chart1.Series.Add(serie);
+					Chart1.Series.Add(serie);
 				}
 			}
-			catch (StackOverflowException){}
-			tBFunction.Text = "";
+			catch (StackOverflowException) { }
+			TBFunction.Text = "";
 		}
-		private void timer1_Tick(object sender, EventArgs e)
+		private void Timer1_Tick(object sender, EventArgs e)
 		{
 			if (Operator.LaunchingProgram)
 			{
-				chart1.Series.Clear();
+				Chart1.Series.Clear();
 				Operator.ChartArea.AxisX.Minimum = -5;
 				Operator.ChartArea.AxisX.Maximum = 5;
 				Operator.ChartArea.AxisX.Interval = 1;
@@ -60,30 +63,64 @@ namespace Qualifying_work
 				Operator.ChartArea.AxisY.ArrowStyle = AxisArrowStyle.SharpTriangle;
 				Operator.ChartArea.AxisY.Crossing = 0;
 				Operator.ChartArea.AxisY.LabelStyle.IsEndLabelVisible = false;
+				Operator.Number_Buttons.Add(Btn0);
+				Operator.Number_Buttons.Add(Btn1);
+				Operator.Number_Buttons.Add(Btn2);
+				Operator.Number_Buttons.Add(Btn3);
+				Operator.Number_Buttons.Add(Btn4);
+				Operator.Number_Buttons.Add(Btn5);
+				Operator.Number_Buttons.Add(Btn6);
+				Operator.Number_Buttons.Add(Btn7);
+				Operator.Number_Buttons.Add(Btn8);
+				Operator.Number_Buttons.Add(Btn9);
+				Operator.SpecialSymbols_Buttons.Add(BtnCBracket);
+				Operator.SpecialSymbols_Buttons.Add(BtnOBracket);
+				Operator.SpecialSymbols_Buttons.Add(BtnMultiply);
+				Operator.SpecialSymbols_Buttons.Add(BtnMinus);
+				Operator.SpecialSymbols_Buttons.Add(BtnSegmentator);
+				Operator.SpecialSymbols_Buttons.Add(BtnPlus);
+				Operator.SpecialSymbols_Buttons.Add(BtnPower);
+				Operator.Function_Buttons.Add(BtnSin);
+				Operator.Function_Buttons.Add(BtnCos);
+				Operator.Function_Buttons.Add(BtnTg);
+				Operator.Function_Buttons.Add(BtnCtg);
+				Operator.Function_Buttons.Add(BtnArcsin);
+				Operator.Function_Buttons.Add(BtnArccos);
+				Operator.Function_Buttons.Add(BtnArctg);
+				Operator.Function_Buttons.Add(BtnArcctg);
+				Operator.Number_Buttons.Add(BtnKoma);
 				Operator.LaunchingProgram = false;
 			}
 			if (Operator.Renew)
 			{
-				chart1.ChartAreas[0] = Operator.ChartArea;
+				Chart1.ChartAreas[0] = Operator.ChartArea;
 				Operator.Renew = false;
 			}
 		}
-		private void tBFunction_TextChanged(object sender, EventArgs e)
+		private void TBFunction_TextChanged(object sender, EventArgs e)
 		{
-			btnEnter.Enabled = (Operator.Breakets == 0) && (tBFunction.Text != "");
-			btnBackSpace.Enabled = tBFunction.Text != "";
+			BtnEnter.Enabled = (Operator.Breakets == 0) && (TBFunction.Text != "");
+			BtnBackSpace.Enabled = TBFunction.Text != "";
 		}
 		#region All buttons
-		private void btnBackSpace_Click(object sender, EventArgs e)
+		private void BtnBackSpace_Click(object sender, EventArgs e)
 		{
-			tBFunction.Text = Operator.BackSpace(tBFunction.Text);
+			char Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
+			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
 			Operator.Breakets = 0;
-			foreach (char item in tBFunction.Text)
+			foreach (char item in TBFunction.Text)
 			{
 				if (item == '(')
 					Operator.Breakets++;
 				if (item == ')')
 					Operator.Breakets--;
+			}
+			switch (Deleted)
+			{
+				case ')':
+					break;
+				default:
+					break;
 			}
 		}
 		private void ShowingBtn_Click(object sender, EventArgs e)
@@ -91,7 +128,6 @@ namespace Qualifying_work
 			if (Operator.IsPanelOpened)
 			{
 				Operator.IsPanelOpened = false;
-				ShowingBtn.Text = "↓";
 				for (int i = 0; i < 22; i++)
 				{
 					pnlProVersion.Location = new Point(pnlProVersion.Location.X, pnlProVersion.Location.Y + 10);
@@ -100,138 +136,217 @@ namespace Qualifying_work
 			else
 			{
 				Operator.IsPanelOpened = true;
-				ShowingBtn.Text = "^";
 				for (int i = 0; i < 22; i++)
 				{
 					pnlProVersion.Location = new Point(pnlProVersion.Location.X, pnlProVersion.Location.Y - 10);
 				}
 			}
 		}
-		private void btnMultiply_Click(object sender, EventArgs e)
+		private void BtnMultiply_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "*(";
+			TBFunction.Text += "*(";
+			Operator.Button_switcher();
+			BtnPlus.Enabled = false;
+			BtnSegmentator.Enabled = false;
+			BtnPower.Enabled = false;
+			BtnKoma.Enabled = false;
+			BtnMultiply.Enabled = true;
 		}
-		private void btnX_Click(object sender, EventArgs e)
+		private void BtnX_Click(object sender, EventArgs e)
 		{
-			tBFunction.Text += "x";
+			TBFunction.Text += "x";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Number_Buttons, false);
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			BtnX.Enabled = false;
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnSegmentator.Enabled = false;
 		}
-		private void btnSegmentator_Click(object sender, EventArgs e)
-		{
-			Operator.Breakets++;
-			tBFunction.Text += "/(";
-		}
-		private void btnPower_Click(object sender, EventArgs e)
-		{
-			Operator.Breakets++;
-			tBFunction.Text += "^(";
-		}
-		private void btn0_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += '0'.ToString();
-		}
-		private void btn1_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "1";
-		}
-		private void btn2_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "2";
-		}
-		private void btn3_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "3";
-		}
-		private void btn4_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "4";
-		}
-		private void btn5_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "5";
-		}
-		private void btn6_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "6";
-		}
-		private void btn7_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "7";
-		}
-		private void btn8_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "8";
-		}
-		private void btn9_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "9";
-		}
-		private void btnSin_Click(object sender, EventArgs e)
+		private void BtnSegmentator_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Sin(";
+			TBFunction.Text += "/(";
+
 		}
-		private void btnCos_Click(object sender, EventArgs e)
+		private void BtnPower_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Cos(";
+			TBFunction.Text += "^(";
 		}
-		private void btnTg_Click(object sender, EventArgs e)
+		private void Btn0_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += '0'.ToString();
+			Operator.Button_switcher();
+            Operator.Button_switcher(Operator.Function_Buttons, false);
+			BtnMultiply.Enabled = false;
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn1_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "1";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn2_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "2";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn3_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "3";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn4_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "4";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn5_Click(object sender, EventArgs e)
+		{TBFunction.Text += "5";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn6_Click(object sender, EventArgs e)
+		{TBFunction.Text += "6";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn7_Click(object sender, EventArgs e)
+		{TBFunction.Text += "7";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn8_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "8";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void Btn9_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "9";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void BtnSin_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Tg(";
+			TBFunction.Text += "Sin(";
 		}
-		private void btnCtg_Click(object sender, EventArgs e)
+		private void BtnCos_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Ctg(";
+			TBFunction.Text += "Cos(";
 		}
-		private void btnArcsin_Click(object sender, EventArgs e)
+		private void BtnTg_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Arcsin(";
+			TBFunction.Text += "Tg(";
 		}
-		private void btnArccos_Click(object sender, EventArgs e)
+		private void BtnCtg_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Arccos(";
+			TBFunction.Text += "Ctg(";
 		}
-		private void btnArctg_Click(object sender, EventArgs e)
+		private void BtnArcsin_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Arctg(";
+			TBFunction.Text += "Arcsin(";
 		}
-		private void btnArcctg_Click(object sender, EventArgs e)
+		private void BtnArccos_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Arcctg(";
+			TBFunction.Text += "Arccos(";
 		}
-		private void btnLog_Click(object sender, EventArgs e)
+		private void BtnArctg_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "Log(";
+			TBFunction.Text += "Arctg(";
 		}
-		private void btnPlus_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "+";
-		}
-		private void btnMinus_Click(object sender, EventArgs e)
-		{
-			tBFunction.Text += "-";
-		}
-		private void btnOBracket_Click(object sender, EventArgs e)
+		private void BtnArcctg_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets++;
-			tBFunction.Text += "(";
+			TBFunction.Text += "Arcctg(";
 		}
-		private void btnCBracket_Click(object sender, EventArgs e)
+		private void BtnLog_Click(object sender, EventArgs e)
+		{
+			Operator.Breakets++;
+			TBFunction.Text += "Log(";
+		}
+		private void BtnPlus_Click(object sender, EventArgs e)
+		{TBFunction.Text += "+";
+			Operator.Button_switcher();
+			Operator.Button_switcher(Operator.Function_Buttons, false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
+			BtnOBracket.Enabled = false;
+			BtnCBracket.Enabled = false;
+			BtnX.Enabled = false;
+		}
+		private void BtnMinus_Click(object sender, EventArgs e)
+		{
+			TBFunction.Text += "-";
+			Operator.Button_switcher();
+			Btn0.Enabled = true;
+		}
+		private void BtnOBracket_Click(object sender, EventArgs e)
+		{
+			Operator.Breakets++;
+			TBFunction.Text += "(";
+		}
+		private void BtnCBracket_Click(object sender, EventArgs e)
 		{
 			Operator.Breakets--;
-			tBFunction.Text += ")";
+			TBFunction.Text += ")";
 		}
-		private void btnKoma_Click(object sender, EventArgs e)
+		private void BtnKoma_Click(object sender, EventArgs e)
 		{
-			tBFunction.Text += ",";
+			TBFunction.Text += ",";
+			Operator.Button_switcher(false);
+			Operator.Button_switcher(Operator.Number_Buttons, true);
 		}
 		#endregion
 	}

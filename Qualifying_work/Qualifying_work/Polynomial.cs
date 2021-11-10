@@ -11,10 +11,15 @@ namespace Qualifying_work
 	{
 		readonly private double Multiplier;
 		readonly private double Power;
-		readonly CountingFunction Function;
+		readonly private CountingFunction Function;
 		readonly private Polynomial InnerPolynomial;
 		readonly private bool IsEnd;
-		public string Text { get; }
+		private string text;
+		public string Text
+		{
+			get { return text; }
+			set { text = value; }
+		}
 		public double YCounter(double x)
 		{
 			if (!IsEnd)
@@ -100,20 +105,28 @@ namespace Qualifying_work
 			this.Multiplier = Convert.ToDouble(BreacketsCleaner(Multiplier));
 			this.Power = Convert.ToDouble(BreacketsCleaner(Power));
 			this.Text = input;
+			string s = InnerText(input);
 			//now we have thing that will go to next level
-			if (InnerText(input) == "x" || IsNumber(input))
+			if (s.Equals("x") || IsNumber(input))
 			{
 				this.IsEnd = true;
 			}
 			else
 			{
 				this.IsEnd = false;
-				this.InnerPolynomial = new Polynomial(InnerText(input));
+				this.InnerPolynomial = new Polynomial(s);
 			}
 		}
 		private string InnerText(string input)
 		{
-			return BreacketsCleaner(BeforePower(AfterMultiplier(input)));
+			if (this.Power == 1)
+			{
+				return BreacketsCleaner(AfterMultiplier(input));
+			}
+			else
+			{
+				return BreacketsCleaner(BeforePower(AfterMultiplier(input)));
+			}
 		}
 		private string AfterMultiplier(string input)
 		{
@@ -129,10 +142,6 @@ namespace Qualifying_work
 				if (item == ')')
 				{
 					breckets--;
-				}
-				if (item == '(' && !b && breckets == 1)
-				{
-					b = true;
 				}
 				if (b)
 				{
