@@ -33,6 +33,7 @@ namespace Qualifying_work
 		}
 		private void BtnEnter_Click(object sender, EventArgs e)
 		{
+			ShowingBtn_Click(sender, e);
 			try
 			{
 				Polynomial polynomial = new Polynomial(TBFunction.Text);
@@ -114,7 +115,11 @@ namespace Qualifying_work
 		private void BtnBackSpace_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
-			char Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
+			char Deleted = 'w';
+			if (TBFunction.Text.Length - 1>0)
+			{
+				Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
+			}
 			Operator.Breakets = 0;
 			foreach (char item in TBFunction.Text)
 			{
@@ -123,42 +128,52 @@ namespace Qualifying_work
 				if (item == ')')
 					Operator.Breakets--;
 			}
-			switch (Deleted)
-			{
-				case '0':
-					Btn0_Click(sender, e);
-					break;
-				case '1':
-					Btn1_Click(sender, e);
-					break;
-				case '2':
-					Btn2_Click(sender, e);
-					break;
-				case '3':
-					Btn3_Click(sender, e);
-					break;
-				case '4':
-					Btn4_Click(sender, e);
-					break;
-				case '5':
-					Btn5_Click(sender, e);
-					break;
-				case '6':
-					Btn6_Click(sender, e);
-					break;
-				case '7':
-					Btn7_Click(sender, e);
-					break;
-				case '8':
-					Btn8_Click(sender, e);
-					break;
-				case '9':
-					Btn9_Click(sender, e);
-					break;
-				default:
-					break;
-			}
-			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
+			//switch (Deleted)
+			//{
+			//	case '0':
+			//		Btn0_Click(sender, e);
+			//		break;
+			//	case '1':
+			//		Btn1_Click(sender, e);
+			//		break;
+			//	case '2':
+			//		Btn2_Click(sender, e);
+			//		break;
+			//	case '3':
+			//		Btn3_Click(sender, e);
+			//		break;
+			//	case '4':
+			//		Btn4_Click(sender, e);
+			//		break;
+			//	case '5':
+			//		Btn5_Click(sender, e);
+			//		break;
+			//	case '6':
+			//		Btn6_Click(sender, e);
+			//		break;
+			//	case '7':
+			//		Btn7_Click(sender, e);
+			//		break;
+			//	case '8':
+			//		Btn8_Click(sender, e);
+			//		break;
+			//	case '9':
+			//		Btn9_Click(sender, e);
+			//		break;
+			//	case 'w':
+			//		Operator.Button_switcher();
+			//		BtnX.Enabled = true;
+			//		BtnPlus.Enabled = false;
+			//		BtnPower.Enabled = false;
+			//		BtnKoma.Enabled = false;
+			//		BtnCBracket.Enabled = false;
+			//		BtnMultiply.Enabled = false;
+			//		BtnSegmentator.Enabled = false;
+			//		break;
+			//	default:
+			//		break;
+			//}
+			//TBFunction.Text = Operator.BackSpace(TBFunction.Text);
 		}
 		private void ShowingBtn_Click(object sender, EventArgs e)
 		{

@@ -30,9 +30,9 @@ namespace Qualifying_work
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnBackSpace = new System.Windows.Forms.Button();
             this.BtnEnter = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
@@ -65,7 +65,6 @@ namespace Qualifying_work
             this.BtnMinus = new System.Windows.Forms.Button();
             this.BtnSegmentator = new System.Windows.Forms.Button();
             this.BtnMultiply = new System.Windows.Forms.Button();
-            this.ListBox1 = new System.Windows.Forms.ListBox();
             this.pnlProVersion = new System.Windows.Forms.Panel();
             this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
@@ -398,15 +397,6 @@ namespace Qualifying_work
             this.BtnMultiply.UseVisualStyleBackColor = true;
             this.BtnMultiply.Click += new System.EventHandler(this.BtnMultiply_Click);
             // 
-            // ListBox1
-            // 
-            this.ListBox1.FormattingEnabled = true;
-            this.ListBox1.ItemHeight = 24;
-            this.ListBox1.Location = new System.Drawing.Point(606, 5);
-            this.ListBox1.Name = "ListBox1";
-            this.ListBox1.Size = new System.Drawing.Size(311, 484);
-            this.ListBox1.TabIndex = 9;
-            // 
             // pnlProVersion
             // 
             this.pnlProVersion.Controls.Add(this.BtnBackSpace);
@@ -448,16 +438,16 @@ namespace Qualifying_work
             // 
             // Chart1
             // 
-            chartArea8.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.Chart1.Legends.Add(legend8);
+            chartArea1.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart1.Legends.Add(legend1);
             this.Chart1.Location = new System.Drawing.Point(0, 0);
             this.Chart1.Name = "Chart1";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.Chart1.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Chart1.Series.Add(series1);
             this.Chart1.Size = new System.Drawing.Size(600, 475);
             this.Chart1.TabIndex = 10;
             this.Chart1.Text = "chart1";
@@ -472,8 +462,7 @@ namespace Qualifying_work
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(924, 500);
-            this.Controls.Add(this.ListBox1);
+            this.ClientSize = new System.Drawing.Size(601, 500);
             this.Controls.Add(this.pnlProVersion);
             this.Controls.Add(this.Chart1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -522,7 +511,6 @@ namespace Qualifying_work
         private System.Windows.Forms.Button BtnMinus;
         private System.Windows.Forms.Button BtnSegmentator;
         private System.Windows.Forms.Button BtnMultiply;
-        private System.Windows.Forms.ListBox ListBox1;
         private System.Windows.Forms.Panel pnlProVersion;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
         private System.Windows.Forms.Timer Timer1;
