@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Qualifying_work
 {
-	class DerivativeMonomial
+	class DerivativeMonomial:Monomial
 	{
 
 	}

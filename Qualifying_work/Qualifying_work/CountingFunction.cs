@@ -46,17 +46,13 @@ namespace Qualifying_work
 	{
 		public override double Counter(double x) { return Math.PI / 2 - Math.Atan(base.Counter(x)); }
 	}
-	class Logarithm : CountingFunction
-	{
-		double lbase = 0;
-		public Logarithm(double lbase)
-		{
-			this.lbase = lbase;
-		}
-		public override double Counter(double x) { return Math.Log(base.Counter(x), lbase); }
-	}
 	class Segmentator : CountingFunction
 	{
-		public override double Counter(double x) { return 1 / base.Counter(x); }
+		private double Multiplier;
+		public Segmentator(double Multiplier)
+        {
+			this.Multiplier = Multiplier;
+        }
+		public override double Counter(double x) { return this.Multiplier / base.Counter(x); }
 	}
 }

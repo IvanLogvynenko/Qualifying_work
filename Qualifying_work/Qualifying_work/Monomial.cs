@@ -13,12 +13,8 @@ namespace Qualifying_work
 		readonly private CountingFunction Function;
 		readonly private Polynomial InnerPolynomial;
 		readonly private bool IsEnd;
-		private string text;
-		public string Text
-		{
-			get { return text; }
-			set { text = value; }
-		}
+		//readonly private bool IsSegmentated;
+		public string Text{get;set;}
 		public double YCounter(double x)
 		{
 			if (!IsEnd)
@@ -57,10 +53,17 @@ namespace Qualifying_work
 			input = input.Replace(".", ",");
 			this.Function = new CountingFunction();
 			string Multiplier = "", Function = "", Power = "";
+			this.IsEnd = false;
+			bool IsSegmentated = false;
 			foreach (char item in input)
 			{
 				if (item == '*' || item == '(')
 				{
+					break;
+				}
+				if (item == '/')
+				{
+					IsSegmentated = true;
 					break;
 				}
 				Multiplier += item;
@@ -100,11 +103,20 @@ namespace Qualifying_work
 			{
 				Power = "1";
 			}
-			this.Function = GetFunction(BreacketsCleaner(Function));
-			this.Multiplier = Convert.ToDouble(BreacketsCleaner(Multiplier));
+			if (IsSegmentated)
+			{
+				this.Function = new Segmentator(Convert.ToDouble(Multiplier));
+				this.Multiplier = 1;
+			}
+			else
+			{
+				this.Function = GetFunction(BreacketsCleaner(Function));
+				this.Multiplier = Convert.ToDouble(BreacketsCleaner(Multiplier));
+			}
 			this.Power = Convert.ToDouble(BreacketsCleaner(Power));
 			this.Text = input;
 			string s = InnerText(input);
+			string g = InnerText(input);
 			//now we have thing that will go to next level
 			if (s.Equals("x") || IsNumber(input))
 			{
@@ -174,8 +186,11 @@ namespace Qualifying_work
 					if (item == ')')
 					{
 						breckets--;
+						if (breckets == 0)
+						{
+							break;
+						}
 					}
-
 					if (b)
 					{
 						answer += item;
@@ -330,6 +345,14 @@ namespace Qualifying_work
 			{
 				return input;
 			}
+		}
+		public Monomial(Monomial monomial)
+		{
+			this.InnerPolynomial = monomial.InnerPolynomial;
+			this.Function = monomial.Function;
+			this.Power = monomial.Power;
+			this.IsEnd = monomial.IsEnd;
+			this.Multiplier = monomial.Multiplier;
 		}
 	}
 }
