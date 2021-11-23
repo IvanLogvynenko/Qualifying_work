@@ -175,7 +175,7 @@ namespace Qualifying_work
 					{
 						breckets--;
 					}
-					
+
 					if (b)
 					{
 						answer += item;
@@ -240,54 +240,55 @@ namespace Qualifying_work
 		}
 		private static CountingFunction GetFunction(string input)
 		{
-			if (input.ToLower().Contains("sin"))
+			if (input.ToLower().Contains("arcsin"))
 			{
-				return new Sinus();
+				return new Arcsinus();
 			}
 			else
 			{
-				if (input.ToLower().Contains("cos"))
+				if (input.ToLower().Contains("arccos"))
 				{
-					return new Cosinus();
+					return new Arccosinus();
 				}
 				else
 				{
-					if (input.ToLower().Contains("tg"))
+					if (input.ToLower().Contains("arctg"))
 					{
-						return new Tangens();
+						return new Arctangens();
 					}
 					else
 					{
-						if (input.ToLower().Contains("ctg"))
+						if (input.ToLower().Contains("arcctg"))
 						{
-							return new Cotangens();
+							return new Arccotangens();
 						}
 						else
 						{
-							if (input.ToLower().Contains("arcsin"))
+							if (input.ToLower().Contains("sin"))
 							{
-								return new Arcsinus();
+								return new Sinus();
 							}
 							else
 							{
-								if (input.ToLower().Contains("arccos"))
+								if (input.ToLower().Contains("cos"))
 								{
-									return new Arccosinus();
+									return new Cosinus();
 								}
 								else
 								{
-									if (input.ToLower().Contains("arctg"))
+									if (input.ToLower().Contains("tg"))
 									{
-										return new Arctangens();
+										return new Tangens();
 									}
 									else
 									{
-										if (input.ToLower().Contains("arcctg"))
+										if (input.ToLower().Contains("ctg"))
 										{
-											return new Arccotangens();
+											return new Cotangens();
 										}
 										else
 										{
+
 											return new CountingFunction();
 										}
 									}

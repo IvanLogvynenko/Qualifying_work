@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Qualifying_work
 {
-    class Derivative
-    {
+	class DerivatePolynomial
+	{
 
-    }
+	}
 }

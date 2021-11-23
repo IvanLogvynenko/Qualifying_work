@@ -48,8 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountingFunction.cs" />
+    <Compile Include="DerivatePolynomial.cs" />
     <Compile Include="DerivatesFunction.cs" />
-    <Compile Include="Derivative.cs" />
+    <Compile Include="DerivativeMonomial.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
