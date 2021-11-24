@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Qualifying_work
 {
-	class DerivatesFunction
+	public class DerivatesFunction
 	{
-
+		public double Counter(double x)
+        {
+			try { return x; } catch (OverflowException) { throw; }
+		}
 	}
+	 
 }

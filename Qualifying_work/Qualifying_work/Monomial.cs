@@ -8,52 +8,61 @@ namespace Qualifying_work
 {
 	public class Monomial
 	{
-		readonly private double Multiplier;
-		readonly private double Power;
-		readonly private CountingFunction Function;
-		readonly private Polynomial InnerPolynomial;
-		readonly private bool IsEnd;
+		readonly private double multiplier;
+		readonly private double power;
+		readonly private CountingFunction function;
+		readonly private Polynomial innerPolynomial;
+		readonly private bool isEnd;
 		//readonly private bool IsSegmentated;
-		public string Text{get;set;}
+		public double Multiplier { get { return multiplier; } }
+		public double Power { get { return power; } }
+		public Polynomial InnerPolynomial { get { return innerPolynomial; } }
+		public string Text { get; }
+		public bool IsEnd { get { return isEnd; } }
+		public CountingFunction Function { get { return function; } }
 		public double YCounter(double x)
 		{
-			if (!IsEnd)
+			try
 			{
-				if (this.Multiplier == 1)
+				if (!isEnd)
 				{
-					return Math.Pow(this.Function.Counter(this.InnerPolynomial.YCounter(x)), this.Power);
-				}
-				else
-				{
-					return Math.Pow(this.InnerPolynomial.YCounter(x), this.Power) * this.Multiplier;
-				}
-			}
-			else
-			{
-				if (IsNumber(this.Text))
-				{
-					return Math.Pow(this.Multiplier, this.Power);
-				}
-				else
-				{
-					if (Multiplier == 1)
+					if (this.multiplier == 1)
 					{
-						return Math.Pow(this.Function.Counter(x), this.Power);
+						return Math.Pow(this.function.Counter(this.innerPolynomial.YCounter(x)), this.power);
 					}
 					else
 					{
-						return Math.Pow(this.Multiplier * x, this.Power);
+						return Math.Pow(this.innerPolynomial.YCounter(x), this.power) * this.multiplier;
+					}
+				}
+				else
+				{
+					if (IsNumber(this.Text))
+					{
+						return Math.Pow(this.multiplier, this.power);
+					}
+					else
+					{
+						if (multiplier == 1)
+						{
+							return Math.Pow(this.function.Counter(x), this.power);
+						}
+						else
+						{
+							return Math.Pow(this.multiplier * x, this.power);
+						}
 					}
 				}
 			}
+			catch (OverflowException) { return 0; }
 		}
 		public Monomial(string input)
 		{
 			input = input.Replace(" ", "");
 			input = input.Replace(".", ",");
-			this.Function = new CountingFunction();
-			string Multiplier = "", Function = "", Power = "";
-			this.IsEnd = false;
+			this.function = new CountingFunction();
+			string multiplier = "", function = "", power = "";
+			this.isEnd = false;
 			bool IsSegmentated = false;
 			foreach (char item in input)
 			{
@@ -66,7 +75,7 @@ namespace Qualifying_work
 					IsSegmentated = true;
 					break;
 				}
-				Multiplier += item;
+				multiplier += item;
 			}
 			bool b = false;
 			int breckets = 0;
@@ -82,69 +91,68 @@ namespace Qualifying_work
 				}
 				if (b)
 				{
-					Power += item;
+					power += item;
 				}
 				if (item.Equals('^') && breckets == 0)
 				{
 					b = true;
-					Power = "";
+					power = "";
 				}
 			}
-			if (IsFunction(Multiplier))
+			if (Isfunction(multiplier))
 			{
-				Function = Multiplier;
-				Multiplier = "1";
+				function = multiplier;
+				multiplier = "1";
 			}
-			if (!IsNumber(Multiplier) || Multiplier.Length == 0)
+			if (!IsNumber(multiplier) || multiplier.Length == 0)
 			{
-				Multiplier = "1";
+				multiplier = "1";
 			}
-			if (!IsNumber(Power) || Power.Length == 0)
+			if (!IsNumber(power) || power.Length == 0)
 			{
-				Power = "1";
+				power = "1";
 			}
 			if (IsSegmentated)
 			{
-				this.Function = new Segmentator(Convert.ToDouble(Multiplier));
-				this.Multiplier = 1;
+				this.function = new Segmentator(Convert.ToDouble(multiplier));
+				this.multiplier = 1;
 			}
 			else
 			{
-				this.Function = GetFunction(BreacketsCleaner(Function));
-				this.Multiplier = Convert.ToDouble(BreacketsCleaner(Multiplier));
+				this.function = Getfunction(BreacketsCleaner(function));
+				this.multiplier = Convert.ToDouble(BreacketsCleaner(multiplier));
 			}
-			this.Power = Convert.ToDouble(BreacketsCleaner(Power));
+			this.power = Convert.ToDouble(BreacketsCleaner(power));
 			this.Text = input;
-			string s = InnerText(input);
-			string g = InnerText(input);
+			string innerText = InnerText(input);
 			//now we have thing that will go to next level
-			if (s.Equals("x") || IsNumber(input))
+			if (innerText.Equals("x") || IsNumber(input))
 			{
-				this.IsEnd = true;
+				this.isEnd = true;
 			}
 			else
 			{
-				this.IsEnd = false;
-				this.InnerPolynomial = new Polynomial(s);
+				this.isEnd = false;
+				this.innerPolynomial = new Polynomial(innerText);
 			}
 		}
 		private string InnerText(string input)
 		{
-			if (this.Power == 1)
+			if (this.power == 1)
 			{
-				return BreacketsCleaner(AfterMultiplier(input));
+				return BreacketsCleaner(Aftermultiplier(input));
 			}
 			else
 			{
-				return BreacketsCleaner(BeforePower(AfterMultiplier(input)));
+				return BreacketsCleaner(Beforepower(Aftermultiplier(input)));
 			}
 		}
-		private string AfterMultiplier(string input)
+		private string Aftermultiplier(string input)
 		{
 			string answer = "";
 			int breckets = 0;
 			bool b = false;
-			if (this.Multiplier != 1)
+			if (this.multiplier != 1)
 			{
 				foreach (char item in input)
 				{
@@ -183,6 +191,10 @@ namespace Qualifying_work
 					{
 						breckets++;
 					}
+					if (b)
+					{
+						answer += item;
+					}
 					if (item == ')')
 					{
 						breckets--;
@@ -191,10 +203,7 @@ namespace Qualifying_work
 							break;
 						}
 					}
-					if (b)
-					{
-						answer += item;
-					}
+
 					if (item == 'x' && breckets == 0)
 					{
 						answer = input;
@@ -208,7 +217,7 @@ namespace Qualifying_work
 			}
 			return answer;
 		}
-		private string BeforePower(string input)
+		private string Beforepower(string input)
 		{
 			string answer = "";
 			int breckets = 0;
@@ -242,7 +251,7 @@ namespace Qualifying_work
 			}
 			return answer;
 		}
-		private static bool IsFunction(string input)
+		private static bool Isfunction(string input)
 		{
 			return input.ToLower().Contains("sin") ||
 				input.ToLower().Contains("cos") ||
@@ -253,7 +262,7 @@ namespace Qualifying_work
 				input.ToLower().Contains("arctg") ||
 				input.ToLower().Contains("arcctg");
 		}
-		private static CountingFunction GetFunction(string input)
+		private static CountingFunction Getfunction(string input)
 		{
 			if (input.ToLower().Contains("arcsin"))
 			{
@@ -345,14 +354,6 @@ namespace Qualifying_work
 			{
 				return input;
 			}
-		}
-		public Monomial(Monomial monomial)
-		{
-			this.InnerPolynomial = monomial.InnerPolynomial;
-			this.Function = monomial.Function;
-			this.Power = monomial.Power;
-			this.IsEnd = monomial.IsEnd;
-			this.Multiplier = monomial.Multiplier;
 		}
 	}
 }

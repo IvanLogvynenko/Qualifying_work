@@ -9,7 +9,12 @@ namespace Qualifying_work
 {
 	public class Polynomial
 	{
-		Monomial[] Monomials { get; }
+		private DerivatePolynomial derivatePolynomial;
+		public DerivatePolynomial DerivatePolynomial
+		{
+			get { return derivatePolynomial; }
+		}
+		public Monomial[] Monomials { get; }
 		public string PolynomialText { get; }
 		public Polynomial(string input)
 		{
@@ -21,10 +26,14 @@ namespace Qualifying_work
 		public double YCounter(double x)
 		{
 			double answer = 0;
-			foreach (Monomial item in this.Monomials)
+			try
 			{
-				answer += item.YCounter(x);
+				foreach (Monomial item in this.Monomials)
+				{
+					answer += item.YCounter(x);
+				}
 			}
+			catch (OverflowException) { }
 			return answer;
 		}
 		private Monomial[] Separator(string input)

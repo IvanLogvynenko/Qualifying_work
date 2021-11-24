@@ -38,6 +38,7 @@ namespace Qualifying_work
 			{
 				Polynomial polynomial = new Polynomial(TBFunction.Text);
 				Operator.Polynomials.Add(polynomial);
+				DerivatePolynomial derivatePolynomial = new DerivatePolynomial(polynomial);
 				Chart1.Series.Clear();
 				foreach (Series serie in Operator.SeriesRenew())
 				{
@@ -115,11 +116,11 @@ namespace Qualifying_work
 		private void BtnBackSpace_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text = Operator.BackSpace(TBFunction.Text);
-			char Deleted = 'w';
-			if (TBFunction.Text.Length - 1>0)
-			{
-				Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
-			}
+			//char Deleted = 'w';
+			//if (TBFunction.Text.Length - 1>0)
+			//{
+			//	Deleted = TBFunction.Text[TBFunction.Text.Length - 1];
+			//}
 			Operator.Breakets = 0;
 			foreach (char item in TBFunction.Text)
 			{

@@ -42,9 +42,10 @@ namespace Qualifying_work
 			foreach (Polynomial polynomial in Operator.Polynomials)
 			{
 				Series series = new Series($"y={polynomial.PolynomialText}");
-				for (double i = -5; i <= 5; i += 0.001)
+				for (double i = -5; i <= 5; i += 0.01)
 				{
-					series.Points.AddXY(i, polynomial.YCounter(i));
+
+					series.Points.AddXY(Math.Round(i, 4), polynomial.YCounter(Math.Round(i, 4)));
 				}
 				series.ChartType = SeriesChartType.Spline;
 				series.Color = System.Drawing.Color.FromArgb(Random.Next(0, 255), Random.Next(0, 255), Random.Next(0, 255));
@@ -53,6 +54,7 @@ namespace Qualifying_work
 			}
 			return Return;
 		}
+		#region ButtonSwitcher
 		public static void Button_switcher(List<Button> buttons)
 		{
 			foreach (Button item in buttons)
@@ -81,7 +83,7 @@ namespace Qualifying_work
 			{
 				item.Enabled = value;
 			}
-			
+
 		}
 		public static void Button_switcher()
 		{
@@ -98,5 +100,6 @@ namespace Qualifying_work
 				item.Enabled = true;
 			}
 		}
+		#endregion
 	}
 }

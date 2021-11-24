@@ -6,53 +6,101 @@ using System.Threading.Tasks;
 
 namespace Qualifying_work
 {
-	class CountingFunction
+	public class CountingFunction
 	{
+		public string Description;
+		public CountingFunction()
+        {
+			Description = "none";
+        }
 		public virtual double Counter(double x)
 		{
 			try { return x; }
 			catch (OverflowException) { throw; }
 		}
 	}
-	class Sinus : CountingFunction
+	public class Sinus : CountingFunction
 	{
+		public Sinus()
+        {
+			base.Description = "sinus";
+        }
 		public override double Counter(double x) { return Math.Sin(base.Counter(x)); }
 	}
-	class Cosinus : CountingFunction
+	public class Cosinus : CountingFunction
 	{
+		public Cosinus()
+        {
+			base.Description = "cosinus";
+        }
 		public override double Counter(double x) { return Math.Cos(base.Counter(x)); }
 	}
-	class Tangens : CountingFunction
+	public class Tangens : CountingFunction
 	{
+		public Tangens()
+        {
+			base.Description = "tangens";
+        }
 		public override double Counter(double x) { return Math.Tan(base.Counter(x)); }
 	}
-	class Cotangens : CountingFunction
+	public class Cotangens : CountingFunction
 	{
+		public Cotangens()
+        {
+			base.Description = "cotangens";
+        }
 		public override double Counter(double x) { return 1 / Math.Tan(base.Counter(x)); }
 	}
-	class Arcsinus : CountingFunction
+	public class Arcsinus : CountingFunction
 	{
+		public Arcsinus()
+        {
+			base.Description = "arcsinus";
+        }
 		public override double Counter(double x) { return Math.Asin(base.Counter(x)); }
 	}
-	class Arccosinus : CountingFunction
+	public class Arccosinus : CountingFunction
 	{
+		public Arccosinus()
+        {
+			base.Description = "arccosinus";
+        }
 		public override double Counter(double x) { return Math.Acos(base.Counter(x)); }
 	}
-	class Arctangens : CountingFunction
+	public class Arctangens : CountingFunction
 	{
+		public Arctangens()
+        {
+			base.Description = "arctangens";
+        }
 		public override double Counter(double x) { return Math.Atan(base.Counter(x)); }
 	}
-	class Arccotangens : CountingFunction
+	public class Arccotangens : CountingFunction
 	{
+		public Arccotangens()
+        {
+			base.Description = "arccotangens";
+        }
 		public override double Counter(double x) { return Math.PI / 2 - Math.Atan(base.Counter(x)); }
 	}
-	class Segmentator : CountingFunction
+	public class Segmentator : CountingFunction
 	{
-		private double Multiplier;
+		readonly private double Multiplier;
 		public Segmentator(double Multiplier)
-        {
+		{
 			this.Multiplier = Multiplier;
-        }
-		public override double Counter(double x) { return this.Multiplier / base.Counter(x); }
+			base.Description = "segmentator";
+		}
+		public override double Counter(double x)
+		{
+			if (x != 0)
+			{
+				return this.Multiplier / base.Counter(x);
+			}
+			else
+			{
+				return this.Multiplier / base.Counter(x + 0.001);
+			}
+		}
 	}
 }
