@@ -30,9 +30,6 @@ namespace Qualifying_work
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnBackSpace = new System.Windows.Forms.Button();
             this.BtnEnter = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
@@ -66,18 +63,19 @@ namespace Qualifying_work
             this.BtnSegmentator = new System.Windows.Forms.Button();
             this.BtnMultiply = new System.Windows.Forms.Button();
             this.pnlProVersion = new System.Windows.Forms.Panel();
-            this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.pnlProVersion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnBackSpace
             // 
             this.BtnBackSpace.Enabled = false;
-            this.BtnBackSpace.Location = new System.Drawing.Point(463, 66);
+            this.BtnBackSpace.Location = new System.Drawing.Point(394, 64);
             this.BtnBackSpace.Name = "BtnBackSpace";
-            this.BtnBackSpace.Size = new System.Drawing.Size(116, 86);
+            this.BtnBackSpace.Size = new System.Drawing.Size(103, 79);
             this.BtnBackSpace.TabIndex = 33;
             this.BtnBackSpace.Text = "←";
             this.BtnBackSpace.UseVisualStyleBackColor = true;
@@ -86,9 +84,9 @@ namespace Qualifying_work
             // BtnEnter
             // 
             this.BtnEnter.Enabled = false;
-            this.BtnEnter.Location = new System.Drawing.Point(463, 156);
+            this.BtnEnter.Location = new System.Drawing.Point(394, 144);
             this.BtnEnter.Name = "BtnEnter";
-            this.BtnEnter.Size = new System.Drawing.Size(116, 86);
+            this.BtnEnter.Size = new System.Drawing.Size(103, 81);
             this.BtnEnter.TabIndex = 32;
             this.BtnEnter.Text = "Enter";
             this.BtnEnter.UseVisualStyleBackColor = true;
@@ -105,7 +103,7 @@ namespace Qualifying_work
             // 
             // ShowingBtn
             // 
-            this.ShowingBtn.Location = new System.Drawing.Point(288, 3);
+            this.ShowingBtn.Location = new System.Drawing.Point(236, 3);
             this.ShowingBtn.Name = "ShowingBtn";
             this.ShowingBtn.Size = new System.Drawing.Size(30, 31);
             this.ShowingBtn.TabIndex = 0;
@@ -117,15 +115,15 @@ namespace Qualifying_work
             // 
             this.TBFunction.Location = new System.Drawing.Point(53, 34);
             this.TBFunction.Name = "TBFunction";
-            this.TBFunction.Size = new System.Drawing.Size(526, 29);
+            this.TBFunction.Size = new System.Drawing.Size(444, 29);
             this.TBFunction.TabIndex = 1;
             this.TBFunction.TextChanged += new System.EventHandler(this.TBFunction_TextChanged);
             // 
             // BtnArcctg
             // 
-            this.BtnArcctg.Location = new System.Drawing.Point(349, 202);
+            this.BtnArcctg.Location = new System.Drawing.Point(304, 185);
             this.BtnArcctg.Name = "BtnArcctg";
-            this.BtnArcctg.Size = new System.Drawing.Size(110, 40);
+            this.BtnArcctg.Size = new System.Drawing.Size(90, 40);
             this.BtnArcctg.TabIndex = 31;
             this.BtnArcctg.Text = "arcctg";
             this.BtnArcctg.UseVisualStyleBackColor = true;
@@ -134,7 +132,7 @@ namespace Qualifying_work
             // BtnKoma
             // 
             this.BtnKoma.Enabled = false;
-            this.BtnKoma.Location = new System.Drawing.Point(97, 200);
+            this.BtnKoma.Location = new System.Drawing.Point(87, 184);
             this.BtnKoma.Name = "BtnKoma";
             this.BtnKoma.Size = new System.Drawing.Size(40, 40);
             this.BtnKoma.TabIndex = 16;
@@ -144,9 +142,9 @@ namespace Qualifying_work
             // 
             // BtnArctg
             // 
-            this.BtnArctg.Location = new System.Drawing.Point(349, 156);
+            this.BtnArctg.Location = new System.Drawing.Point(304, 144);
             this.BtnArctg.Name = "BtnArctg";
-            this.BtnArctg.Size = new System.Drawing.Size(110, 40);
+            this.BtnArctg.Size = new System.Drawing.Size(90, 40);
             this.BtnArctg.TabIndex = 30;
             this.BtnArctg.Text = "arctg";
             this.BtnArctg.UseVisualStyleBackColor = true;
@@ -154,7 +152,7 @@ namespace Qualifying_work
             // 
             // BtnX
             // 
-            this.BtnX.Location = new System.Drawing.Point(189, 200);
+            this.BtnX.Location = new System.Drawing.Point(170, 185);
             this.BtnX.Name = "BtnX";
             this.BtnX.Size = new System.Drawing.Size(40, 40);
             this.BtnX.TabIndex = 23;
@@ -164,9 +162,9 @@ namespace Qualifying_work
             // 
             // BtnArccos
             // 
-            this.BtnArccos.Location = new System.Drawing.Point(349, 110);
+            this.BtnArccos.Location = new System.Drawing.Point(304, 104);
             this.BtnArccos.Name = "BtnArccos";
-            this.BtnArccos.Size = new System.Drawing.Size(110, 40);
+            this.BtnArccos.Size = new System.Drawing.Size(90, 40);
             this.BtnArccos.TabIndex = 28;
             this.BtnArccos.Text = "arccos";
             this.BtnArccos.UseVisualStyleBackColor = true;
@@ -174,7 +172,7 @@ namespace Qualifying_work
             // 
             // Btn1
             // 
-            this.Btn1.Location = new System.Drawing.Point(7, 154);
+            this.Btn1.Location = new System.Drawing.Point(7, 144);
             this.Btn1.Name = "Btn1";
             this.Btn1.Size = new System.Drawing.Size(40, 40);
             this.Btn1.TabIndex = 14;
@@ -184,9 +182,9 @@ namespace Qualifying_work
             // 
             // BtnArcsin
             // 
-            this.BtnArcsin.Location = new System.Drawing.Point(349, 64);
+            this.BtnArcsin.Location = new System.Drawing.Point(304, 64);
             this.BtnArcsin.Name = "BtnArcsin";
-            this.BtnArcsin.Size = new System.Drawing.Size(110, 40);
+            this.BtnArcsin.Size = new System.Drawing.Size(90, 40);
             this.BtnArcsin.TabIndex = 34;
             this.BtnArcsin.Text = "arcsin";
             this.BtnArcsin.UseVisualStyleBackColor = true;
@@ -194,9 +192,9 @@ namespace Qualifying_work
             // 
             // BtnCtg
             // 
-            this.BtnCtg.Location = new System.Drawing.Point(235, 202);
+            this.BtnCtg.Location = new System.Drawing.Point(214, 185);
             this.BtnCtg.Name = "BtnCtg";
-            this.BtnCtg.Size = new System.Drawing.Size(110, 40);
+            this.BtnCtg.Size = new System.Drawing.Size(90, 40);
             this.BtnCtg.TabIndex = 29;
             this.BtnCtg.Text = "ctg";
             this.BtnCtg.UseVisualStyleBackColor = true;
@@ -204,9 +202,9 @@ namespace Qualifying_work
             // 
             // Btn0
             // 
-            this.Btn0.Location = new System.Drawing.Point(7, 200);
+            this.Btn0.Location = new System.Drawing.Point(7, 184);
             this.Btn0.Name = "Btn0";
-            this.Btn0.Size = new System.Drawing.Size(85, 40);
+            this.Btn0.Size = new System.Drawing.Size(80, 40);
             this.Btn0.TabIndex = 6;
             this.Btn0.Text = "0";
             this.Btn0.UseVisualStyleBackColor = true;
@@ -215,7 +213,7 @@ namespace Qualifying_work
             // BtnCBracket
             // 
             this.BtnCBracket.Enabled = false;
-            this.BtnCBracket.Location = new System.Drawing.Point(189, 109);
+            this.BtnCBracket.Location = new System.Drawing.Point(170, 104);
             this.BtnCBracket.Name = "BtnCBracket";
             this.BtnCBracket.Size = new System.Drawing.Size(40, 40);
             this.BtnCBracket.TabIndex = 19;
@@ -225,9 +223,9 @@ namespace Qualifying_work
             // 
             // BtnSin
             // 
-            this.BtnSin.Location = new System.Drawing.Point(235, 64);
+            this.BtnSin.Location = new System.Drawing.Point(214, 64);
             this.BtnSin.Name = "BtnSin";
-            this.BtnSin.Size = new System.Drawing.Size(110, 40);
+            this.BtnSin.Size = new System.Drawing.Size(90, 40);
             this.BtnSin.TabIndex = 25;
             this.BtnSin.Text = "sin";
             this.BtnSin.UseVisualStyleBackColor = true;
@@ -235,9 +233,9 @@ namespace Qualifying_work
             // 
             // BtnCos
             // 
-            this.BtnCos.Location = new System.Drawing.Point(235, 110);
+            this.BtnCos.Location = new System.Drawing.Point(214, 104);
             this.BtnCos.Name = "BtnCos";
-            this.BtnCos.Size = new System.Drawing.Size(110, 40);
+            this.BtnCos.Size = new System.Drawing.Size(90, 40);
             this.BtnCos.TabIndex = 26;
             this.BtnCos.Text = "cos";
             this.BtnCos.UseVisualStyleBackColor = true;
@@ -245,7 +243,7 @@ namespace Qualifying_work
             // 
             // Btn2
             // 
-            this.Btn2.Location = new System.Drawing.Point(52, 154);
+            this.Btn2.Location = new System.Drawing.Point(47, 144);
             this.Btn2.Name = "Btn2";
             this.Btn2.Size = new System.Drawing.Size(40, 40);
             this.Btn2.TabIndex = 13;
@@ -255,9 +253,9 @@ namespace Qualifying_work
             // 
             // BtnTg
             // 
-            this.BtnTg.Location = new System.Drawing.Point(235, 156);
+            this.BtnTg.Location = new System.Drawing.Point(214, 144);
             this.BtnTg.Name = "BtnTg";
-            this.BtnTg.Size = new System.Drawing.Size(110, 40);
+            this.BtnTg.Size = new System.Drawing.Size(90, 40);
             this.BtnTg.TabIndex = 35;
             this.BtnTg.Text = "tg";
             this.BtnTg.UseVisualStyleBackColor = true;
@@ -265,7 +263,7 @@ namespace Qualifying_work
             // 
             // Btn9
             // 
-            this.Btn9.Location = new System.Drawing.Point(97, 64);
+            this.Btn9.Location = new System.Drawing.Point(87, 64);
             this.Btn9.Name = "Btn9";
             this.Btn9.Size = new System.Drawing.Size(40, 40);
             this.Btn9.TabIndex = 15;
@@ -276,7 +274,7 @@ namespace Qualifying_work
             // BtnPower
             // 
             this.BtnPower.Enabled = false;
-            this.BtnPower.Location = new System.Drawing.Point(189, 154);
+            this.BtnPower.Location = new System.Drawing.Point(170, 144);
             this.BtnPower.Name = "BtnPower";
             this.BtnPower.Size = new System.Drawing.Size(40, 40);
             this.BtnPower.TabIndex = 17;
@@ -286,7 +284,7 @@ namespace Qualifying_work
             // 
             // Btn8
             // 
-            this.Btn8.Location = new System.Drawing.Point(52, 64);
+            this.Btn8.Location = new System.Drawing.Point(47, 64);
             this.Btn8.Name = "Btn8";
             this.Btn8.Size = new System.Drawing.Size(40, 40);
             this.Btn8.TabIndex = 10;
@@ -296,7 +294,7 @@ namespace Qualifying_work
             // 
             // BtnOBracket
             // 
-            this.BtnOBracket.Location = new System.Drawing.Point(189, 64);
+            this.BtnOBracket.Location = new System.Drawing.Point(170, 64);
             this.BtnOBracket.Name = "BtnOBracket";
             this.BtnOBracket.Size = new System.Drawing.Size(40, 40);
             this.BtnOBracket.TabIndex = 24;
@@ -306,7 +304,7 @@ namespace Qualifying_work
             // 
             // Btn4
             // 
-            this.Btn4.Location = new System.Drawing.Point(7, 109);
+            this.Btn4.Location = new System.Drawing.Point(7, 104);
             this.Btn4.Name = "Btn4";
             this.Btn4.Size = new System.Drawing.Size(40, 40);
             this.Btn4.TabIndex = 11;
@@ -316,7 +314,7 @@ namespace Qualifying_work
             // 
             // Btn6
             // 
-            this.Btn6.Location = new System.Drawing.Point(97, 109);
+            this.Btn6.Location = new System.Drawing.Point(87, 104);
             this.Btn6.Name = "Btn6";
             this.Btn6.Size = new System.Drawing.Size(40, 40);
             this.Btn6.TabIndex = 7;
@@ -326,7 +324,7 @@ namespace Qualifying_work
             // 
             // Btn5
             // 
-            this.Btn5.Location = new System.Drawing.Point(52, 109);
+            this.Btn5.Location = new System.Drawing.Point(47, 104);
             this.Btn5.Name = "Btn5";
             this.Btn5.Size = new System.Drawing.Size(40, 40);
             this.Btn5.TabIndex = 8;
@@ -337,7 +335,7 @@ namespace Qualifying_work
             // BtnPlus
             // 
             this.BtnPlus.Enabled = false;
-            this.BtnPlus.Location = new System.Drawing.Point(143, 64);
+            this.BtnPlus.Location = new System.Drawing.Point(130, 64);
             this.BtnPlus.Name = "BtnPlus";
             this.BtnPlus.Size = new System.Drawing.Size(40, 40);
             this.BtnPlus.TabIndex = 22;
@@ -347,7 +345,7 @@ namespace Qualifying_work
             // 
             // Btn3
             // 
-            this.Btn3.Location = new System.Drawing.Point(97, 154);
+            this.Btn3.Location = new System.Drawing.Point(87, 144);
             this.Btn3.Name = "Btn3";
             this.Btn3.Size = new System.Drawing.Size(40, 40);
             this.Btn3.TabIndex = 12;
@@ -367,7 +365,7 @@ namespace Qualifying_work
             // 
             // BtnMinus
             // 
-            this.BtnMinus.Location = new System.Drawing.Point(143, 109);
+            this.BtnMinus.Location = new System.Drawing.Point(130, 104);
             this.BtnMinus.Name = "BtnMinus";
             this.BtnMinus.Size = new System.Drawing.Size(40, 40);
             this.BtnMinus.TabIndex = 18;
@@ -378,7 +376,7 @@ namespace Qualifying_work
             // BtnSegmentator
             // 
             this.BtnSegmentator.Enabled = false;
-            this.BtnSegmentator.Location = new System.Drawing.Point(143, 200);
+            this.BtnSegmentator.Location = new System.Drawing.Point(130, 185);
             this.BtnSegmentator.Name = "BtnSegmentator";
             this.BtnSegmentator.Size = new System.Drawing.Size(40, 40);
             this.BtnSegmentator.TabIndex = 20;
@@ -389,7 +387,7 @@ namespace Qualifying_work
             // BtnMultiply
             // 
             this.BtnMultiply.Enabled = false;
-            this.BtnMultiply.Location = new System.Drawing.Point(143, 154);
+            this.BtnMultiply.Location = new System.Drawing.Point(130, 144);
             this.BtnMultiply.Name = "BtnMultiply";
             this.BtnMultiply.Size = new System.Drawing.Size(40, 40);
             this.BtnMultiply.TabIndex = 21;
@@ -431,40 +429,43 @@ namespace Qualifying_work
             this.pnlProVersion.Controls.Add(this.BtnMinus);
             this.pnlProVersion.Controls.Add(this.BtnSegmentator);
             this.pnlProVersion.Controls.Add(this.BtnMultiply);
-            this.pnlProVersion.Location = new System.Drawing.Point(0, 466);
+            this.pnlProVersion.Location = new System.Drawing.Point(0, 501);
             this.pnlProVersion.Name = "pnlProVersion";
-            this.pnlProVersion.Size = new System.Drawing.Size(600, 254);
+            this.pnlProVersion.Size = new System.Drawing.Size(500, 227);
             this.pnlProVersion.TabIndex = 8;
-            // 
-            // Chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart1.Legends.Add(legend1);
-            this.Chart1.Location = new System.Drawing.Point(0, 0);
-            this.Chart1.Name = "Chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Chart1.Series.Add(series1);
-            this.Chart1.Size = new System.Drawing.Size(600, 475);
-            this.Chart1.TabIndex = 10;
-            this.Chart1.Text = "chart1";
             // 
             // Timer1
             // 
             this.Timer1.Interval = 10;
             this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(500, 500);
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 24;
+            this.listBox1.Location = new System.Drawing.Point(501, 2);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(223, 532);
+            this.listBox1.TabIndex = 37;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(601, 500);
+            this.ClientSize = new System.Drawing.Size(725, 541);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.pnlProVersion);
-            this.Controls.Add(this.Chart1);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -473,7 +474,7 @@ namespace Qualifying_work
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlProVersion.ResumeLayout(false);
             this.pnlProVersion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -512,8 +513,9 @@ namespace Qualifying_work
         private System.Windows.Forms.Button BtnSegmentator;
         private System.Windows.Forms.Button BtnMultiply;
         private System.Windows.Forms.Panel pnlProVersion;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Chart1;
         private System.Windows.Forms.Timer Timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

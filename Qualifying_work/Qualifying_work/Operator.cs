@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Qualifying_work
 {
@@ -12,18 +13,14 @@ namespace Qualifying_work
 	{
 		public static List<Polynomial> Polynomials;
 		public static int Breakets;
+		public static KoordinationSystem koordinationSystem;
 		#region button lists
 		public static List<Button> Number_Buttons;
 		public static List<Button> Function_Buttons;
 		public static List<Button> SpecialSymbols_Buttons;
 		#endregion
 		#region logical params(for background operating)
-		public static bool LaunchingProgram;
-		public static bool Renew;
-		public static bool IsPanelOpened;
-		#endregion
-		#region chart params
-		public static ChartArea ChartArea;
+		public static bool LaunchingProgram, Renew, IsPanelOpened, Pi, Numbers;
 		#endregion
 		public static string BackSpace(string inputText)
 		{

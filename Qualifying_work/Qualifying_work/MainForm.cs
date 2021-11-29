@@ -24,9 +24,9 @@ namespace Qualifying_work
 			Operator.Number_Buttons = new List<Button>();
 			Operator.Function_Buttons = new List<Button>();
 			Operator.SpecialSymbols_Buttons = new List<Button>();
+			Operator.koordinationSystem = new KoordinationSystem(new Bitmap(pictureBox1.Width, pictureBox1.Height), new Area(-5, 5, -5, 5, 0.001));
 			Operator.LaunchingProgram = true;
 			Operator.Renew = true;
-			Operator.ChartArea = new ChartArea();
 			Operator.Breakets = 0;
 			Timer1.Interval = 10;
 			Timer1.Start();
@@ -38,12 +38,6 @@ namespace Qualifying_work
 			{
 				Polynomial polynomial = new Polynomial(TBFunction.Text);
 				Operator.Polynomials.Add(polynomial);
-				DerivatePolynomial derivatePolynomial = new DerivatePolynomial(polynomial);
-				Chart1.Series.Clear();
-				foreach (Series serie in Operator.SeriesRenew())
-				{
-					Chart1.Series.Add(serie);
-				}
 			}
 			catch (StackOverflowException) { }
 			TBFunction.Text = "";
@@ -60,19 +54,19 @@ namespace Qualifying_work
 		{
 			if (Operator.LaunchingProgram)
 			{
-				Chart1.Series.Clear();
-				Operator.ChartArea.AxisX.Minimum = -5;
-				Operator.ChartArea.AxisX.Maximum = 5;
-				Operator.ChartArea.AxisX.Interval = 1;
-				Operator.ChartArea.AxisX.ArrowStyle = AxisArrowStyle.SharpTriangle;
-				Operator.ChartArea.AxisX.Crossing = 0;
-				Operator.ChartArea.AxisX.LabelStyle.IsEndLabelVisible = false;
-				Operator.ChartArea.AxisY.Minimum = -5;
-				Operator.ChartArea.AxisY.Maximum = 5;
-				Operator.ChartArea.AxisY.Interval = 1;
-				Operator.ChartArea.AxisY.ArrowStyle = AxisArrowStyle.SharpTriangle;
-				Operator.ChartArea.AxisY.Crossing = 0;
-				Operator.ChartArea.AxisY.LabelStyle.IsEndLabelVisible = false;
+				Operator.koordinationSystem.BuildSystem();
+				//Operator.ChartArea.AxisX.Minimum = -5;
+				//Operator.ChartArea.AxisX.Maximum = 5;
+				//Operator.ChartArea.AxisX.Interval = 1;
+				//Operator.ChartArea.AxisX.ArrowStyle = AxisArrowStyle.SharpTriangle;
+				//Operator.ChartArea.AxisX.Crossing = 0;
+				//Operator.ChartArea.AxisX.LabelStyle.IsEndLabelVisible = false;
+				//Operator.ChartArea.AxisY.Minimum = -5;
+				//Operator.ChartArea.AxisY.Maximum = 5;
+				//Operator.ChartArea.AxisY.Interval = 1;
+				//Operator.ChartArea.AxisY.ArrowStyle = AxisArrowStyle.SharpTriangle;
+				//Operator.ChartArea.AxisY.Crossing = 0;
+				//Operator.ChartArea.AxisY.LabelStyle.IsEndLabelVisible = false;
 				Operator.Number_Buttons.Add(Btn0);
 				Operator.Number_Buttons.Add(Btn1);
 				Operator.Number_Buttons.Add(Btn2);
@@ -100,10 +94,11 @@ namespace Qualifying_work
 				Operator.Function_Buttons.Add(BtnArcctg);
 				Operator.Number_Buttons.Add(BtnKoma);
 				Operator.LaunchingProgram = false;
+				Operator.Renew = true;
 			}
 			if (Operator.Renew)
 			{
-				Chart1.ChartAreas[0] = Operator.ChartArea;
+				pictureBox1.Image = Operator.koordinationSystem.Bitmap;
 				Operator.Renew = false;
 			}
 		}
@@ -385,11 +380,6 @@ namespace Qualifying_work
 			BtnCBracket.Enabled = true;
 			BtnKoma.Enabled = false;
 		}
-		//private void BtnLog_Click(object sender, EventArgs e)
-		//{
-		//	Operator.Breakets++;
-		//	TBFunction.Text += "Log(";
-		//}
 		#endregion
 		#region Symbols
 		private void BtnPlus_Click(object sender, EventArgs e)
@@ -464,5 +454,10 @@ namespace Qualifying_work
 		}
 		#endregion
 		#endregion
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+			Operator.koordinationSystem.BuildSystem();
+			pictureBox1.Image = Operator.koordinationSystem.Bitmap;
+		}
 	}
 }

@@ -10,6 +10,7 @@ namespace Qualifying_work
 	{
 		readonly private Polynomial polynomial;
 		readonly private DerivativeMonomial[] derivativeMonomials;
+		public DerivativeMonomial[] DerivativeMonomials { get { return derivativeMonomials; } }
 		public DerivatePolynomial(Polynomial polynomial)
 		{
 			this.polynomial = polynomial;
