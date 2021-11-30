@@ -19,3 +19,6 @@ D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.exe
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.pdb
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.csproj.SuggestedBindingRedirects.cache
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.Analysis.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.FuncActions.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.FuncChange.resources

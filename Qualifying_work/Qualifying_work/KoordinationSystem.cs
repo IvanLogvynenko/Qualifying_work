@@ -11,25 +11,25 @@ namespace Qualifying_work
 {
 	public class KoordinationSystem
 	{
-		public Bitmap Bitmap { get; set; }
 		public Area Area { get; set; }
+		public Area AreaI;
 		public Graphics Graphics { get; set; }
-		public KoordinationSystem(Bitmap Bitmap, Area Area)
+		public KoordinationSystem(Area Area, Area AreaI)
 		{
-			this.Bitmap = Bitmap;
 			this.Area = Area;
-			this.Graphics = Graphics.FromImage(this.Bitmap);
+			this.Graphics = Graphics.FromImage(Operator.Bitmap);
+			this.AreaI = AreaI;
 		}
 		public int Xtoi(double x)
 		{
 			int ii;
-			ii = (int)((x - Area.XMin) * (Bitmap.Width / (Area.XMax - Area.XMin)));
+			ii = (int)AreaI.XMin + (int)((x - Area.XMin) * ((AreaI.XMax - AreaI.XMin) / (Area.XMax - Area.XMin)));
 			return ii;
 		}
 		public int Ytoj(double y)
 		{
 			int jj;
-			jj = Bitmap.Height + (int)((y - Area.YMin) * Bitmap.Height / (Area.YMax - Area.YMin));
+			jj = (int)AreaI.YMax + (int)((y - Area.YMin) * (AreaI.YMin - AreaI.YMax) / (Area.YMax - Area.YMin));
 			return jj;
 		}
 		public void BuildSystem(bool points)
@@ -52,9 +52,7 @@ namespace Qualifying_work
 			{
 				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
 			}
-			Pen AxisPen = new Pen(Brushes.Black, 2);
-			AxisPen.EndCap = LineCap.ArrowAnchor;
-			AxisPen.StartCap = LineCap.Triangle;
+			Pen AxisPen = new Pen(Brushes.Black, 2) { StartCap = LineCap.Triangle, EndCap = LineCap.ArrowAnchor };
 			Graphics.DrawLine(AxisPen, Xtoi(Area.XMin), Ytoj(0), Xtoi(Area.XMax), Ytoj(0));
 			Graphics.DrawLine(AxisPen, Xtoi(0), Ytoj(Area.YMin), Xtoi(0), Ytoj(Area.YMax));
 			Font font = new Font("tahoma", 10, FontStyle.Regular);
@@ -62,44 +60,13 @@ namespace Qualifying_work
 			{
 				Numbers();
 			}
-            else
-            {
+			else
+			{
 				Pi();
 			}
 			Graphics.DrawString("0", font, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
 			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
-			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.3)));
-		}
-		public void BuildSystem()
-		{
-			Graphics.Clear(Color.White);
-			Pen LinesPen = new Pen(Brushes.LightBlue, 1) { DashStyle = DashStyle.Dash };
-			for (double i = 0; i < Area.XMax; i += Area.Step)
-			{
-				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
-			}
-			for (double i = 0; i > Area.XMin; i -= Area.Step)
-			{
-				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
-			}
-			for (double i = 0; i < Area.YMax; i += Area.Step)
-			{
-				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
-			}
-			for (double i = 0; i > Area.YMin; i -= Area.Step)
-			{
-				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
-			}
-			Pen AxisPen = new Pen(Brushes.Black, 2);
-			AxisPen.EndCap = LineCap.ArrowAnchor;
-			AxisPen.StartCap = LineCap.Triangle;
-			Graphics.DrawLine(AxisPen, Xtoi(Area.XMin), Ytoj(0), Xtoi(Area.XMax), Ytoj(0));
-			Graphics.DrawLine(AxisPen, Xtoi(0), Ytoj(Area.YMin), Xtoi(0), Ytoj(Area.YMax));
-			Font font = new Font("tahoma", 10, FontStyle.Regular);
-			Numbers();
-			Graphics.DrawString("0", font, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
-			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
-			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.3)));
+			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
 		}
 		public void Pi()
 		{
@@ -174,6 +141,12 @@ namespace Qualifying_work
 			}
 			Graphics.DrawString("0", ftn1, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
 		}
+		public void BuildFuncton(Function function)
+		{
+			Pen pen = new Pen(function.Color, 3);
+			this.Graphics.DrawLines(pen, function.Points);
+			Operator.Renew = true;
+		}
 	}
 	public class Area
 	{
@@ -182,13 +155,20 @@ namespace Qualifying_work
 		public double XMin { get; set; }
 		public double YMin { get; set; }
 		public double Step { get; set; }
-		public Area(double XMax, double XMin, double YMax, double YMin, double Step)
+		public Area(double XMin, double XMax, double YMin, double YMax, double Step)
 		{
 			this.XMax = XMax;
 			this.XMin = XMin;
 			this.YMax = YMax;
 			this.YMin = YMin;
 			this.Step = Step;
+		}
+		public Area(double XMin, double XMax, double YMin, double YMax)
+		{
+			this.XMax = XMax;
+			this.XMin = XMin;
+			this.YMax = YMax;
+			this.YMin = YMin;
 		}
 	}
 }

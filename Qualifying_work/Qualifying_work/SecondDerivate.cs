@@ -27,7 +27,7 @@ namespace Qualifying_work
 		{
 			foreach (DerivativeMonomial item in derivatePolynomial.DerivativeMonomials)
 			{
-				if (!item.Monomial.IsEnd)
+				if (!item.Monomial.IsEnd && !(item.Monomial.Function.Equals(new Cosinus())|| item.Monomial.Function.Equals(new CountingFunction()) || item.Monomial.Function.Equals(new Sinus())))
 				{
 					return false;
 				}

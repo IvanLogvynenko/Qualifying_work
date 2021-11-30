@@ -9,18 +9,22 @@ using System.Drawing;
 
 namespace Qualifying_work
 {
-	static class Operator
+	//static class Operator
 	{
-		public static List<Polynomial> Polynomials;
+		public static List<Function> Functions;
+		public static Function currentFunctions;
+		public static int currentChoise;
 		public static int Breakets;
 		public static KoordinationSystem koordinationSystem;
+		public static Bitmap Bitmap;
+		public static double Step;
 		#region button lists
 		public static List<Button> Number_Buttons;
 		public static List<Button> Function_Buttons;
 		public static List<Button> SpecialSymbols_Buttons;
 		#endregion
 		#region logical params(for background operating)
-		public static bool LaunchingProgram, Renew, IsPanelOpened, Pi, Numbers;
+		public static bool LaunchingProgram, Renew, IsPanelOpened;
 		#endregion
 		public static string BackSpace(string inputText)
 		{
@@ -32,24 +36,9 @@ namespace Qualifying_work
 			}
 			return newVariant;
 		}
-		public static List<Series> SeriesRenew()
+		public static bool IsInteger(double number)
 		{
-			List<Series> Return = new List<Series>();
-			Random Random = new Random();
-			foreach (Polynomial polynomial in Operator.Polynomials)
-			{
-				Series series = new Series($"y={polynomial.PolynomialText}");
-				for (double i = -5; i <= 5; i += 0.01)
-				{
-
-					series.Points.AddXY(Math.Round(i, 4), polynomial.YCounter(Math.Round(i, 4)));
-				}
-				series.ChartType = SeriesChartType.Spline;
-				series.Color = System.Drawing.Color.FromArgb(Random.Next(0, 255), Random.Next(0, 255), Random.Next(0, 255));
-				series.BorderWidth = 3;
-				Return.Add(series);
-			}
-			return Return;
+			return number % 1 == 0;
 		}
 		#region ButtonSwitcher
 		public static void Button_switcher(List<Button> buttons)

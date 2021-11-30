@@ -1,34 +1,34 @@
 ﻿
 namespace Qualifying_work
 {
-    partial class MainForm
-    {
-        /// <summary>
-        /// Обязательная переменная конструктора.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class MainForm
+	{
+		/// <summary>
+		/// Обязательная переменная конструктора.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Освободить все используемые ресурсы.
-        /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Освободить все используемые ресурсы.
+		/// </summary>
+		/// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Код, автоматически созданный конструктором форм Windows
+		#region Код, автоматически созданный конструктором форм Windows
 
-        /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Требуемый метод для поддержки конструктора — не изменяйте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.components = new System.ComponentModel.Container();
             this.BtnBackSpace = new System.Windows.Forms.Button();
             this.BtnEnter = new System.Windows.Forms.Button();
@@ -429,9 +429,9 @@ namespace Qualifying_work
             this.pnlProVersion.Controls.Add(this.BtnMinus);
             this.pnlProVersion.Controls.Add(this.BtnSegmentator);
             this.pnlProVersion.Controls.Add(this.BtnMultiply);
-            this.pnlProVersion.Location = new System.Drawing.Point(0, 501);
+            this.pnlProVersion.Location = new System.Drawing.Point(0, 500);
             this.pnlProVersion.Name = "pnlProVersion";
-            this.pnlProVersion.Size = new System.Drawing.Size(500, 227);
+            this.pnlProVersion.Size = new System.Drawing.Size(500, 229);
             this.pnlProVersion.TabIndex = 8;
             // 
             // Timer1
@@ -446,7 +446,6 @@ namespace Qualifying_work
             this.pictureBox1.Size = new System.Drawing.Size(500, 500);
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // listBox1
             // 
@@ -456,13 +455,14 @@ namespace Qualifying_work
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(223, 532);
             this.listBox1.TabIndex = 37;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(725, 541);
+            this.ClientSize = new System.Drawing.Size(725, 534);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.pnlProVersion);
             this.Controls.Add(this.pictureBox1);
@@ -470,52 +470,52 @@ namespace Qualifying_work
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Builder";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnlProVersion.ResumeLayout(false);
             this.pnlProVersion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
-        private System.Windows.Forms.Button BtnBackSpace;
-        private System.Windows.Forms.Button BtnEnter;
-        private System.Windows.Forms.Label lblY;
-        private System.Windows.Forms.Button ShowingBtn;
-        private System.Windows.Forms.TextBox TBFunction;
-        private System.Windows.Forms.Button BtnArcctg;
-        private System.Windows.Forms.Button BtnKoma;
-        private System.Windows.Forms.Button BtnArctg;
-        private System.Windows.Forms.Button BtnX;
-        private System.Windows.Forms.Button BtnArccos;
-        private System.Windows.Forms.Button Btn1;
-        private System.Windows.Forms.Button BtnArcsin;
-        private System.Windows.Forms.Button BtnCtg;
-        private System.Windows.Forms.Button Btn0;
-        private System.Windows.Forms.Button BtnCBracket;
-        private System.Windows.Forms.Button BtnSin;
-        private System.Windows.Forms.Button BtnCos;
-        private System.Windows.Forms.Button Btn2;
-        private System.Windows.Forms.Button BtnTg;
-        private System.Windows.Forms.Button Btn9;
-        private System.Windows.Forms.Button BtnPower;
-        private System.Windows.Forms.Button Btn8;
-        private System.Windows.Forms.Button BtnOBracket;
-        private System.Windows.Forms.Button Btn4;
-        private System.Windows.Forms.Button Btn6;
-        private System.Windows.Forms.Button Btn5;
-        private System.Windows.Forms.Button BtnPlus;
-        private System.Windows.Forms.Button Btn3;
-        private System.Windows.Forms.Button Btn7;
-        private System.Windows.Forms.Button BtnMinus;
-        private System.Windows.Forms.Button BtnSegmentator;
-        private System.Windows.Forms.Button BtnMultiply;
-        private System.Windows.Forms.Panel pnlProVersion;
-        private System.Windows.Forms.Timer Timer1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBox1;
-    }
+		#endregion
+		private System.Windows.Forms.Button BtnBackSpace;
+		private System.Windows.Forms.Button BtnEnter;
+		private System.Windows.Forms.Label lblY;
+		private System.Windows.Forms.Button ShowingBtn;
+		private System.Windows.Forms.TextBox TBFunction;
+		private System.Windows.Forms.Button BtnArcctg;
+		private System.Windows.Forms.Button BtnKoma;
+		private System.Windows.Forms.Button BtnArctg;
+		private System.Windows.Forms.Button BtnX;
+		private System.Windows.Forms.Button BtnArccos;
+		private System.Windows.Forms.Button Btn1;
+		private System.Windows.Forms.Button BtnArcsin;
+		private System.Windows.Forms.Button BtnCtg;
+		private System.Windows.Forms.Button Btn0;
+		private System.Windows.Forms.Button BtnCBracket;
+		private System.Windows.Forms.Button BtnSin;
+		private System.Windows.Forms.Button BtnCos;
+		private System.Windows.Forms.Button Btn2;
+		private System.Windows.Forms.Button BtnTg;
+		private System.Windows.Forms.Button Btn9;
+		private System.Windows.Forms.Button BtnPower;
+		private System.Windows.Forms.Button Btn8;
+		private System.Windows.Forms.Button BtnOBracket;
+		private System.Windows.Forms.Button Btn4;
+		private System.Windows.Forms.Button Btn6;
+		private System.Windows.Forms.Button Btn5;
+		private System.Windows.Forms.Button BtnPlus;
+		private System.Windows.Forms.Button Btn3;
+		private System.Windows.Forms.Button Btn7;
+		private System.Windows.Forms.Button BtnMinus;
+		private System.Windows.Forms.Button BtnSegmentator;
+		private System.Windows.Forms.Button BtnMultiply;
+		private System.Windows.Forms.Panel pnlProVersion;
+		private System.Windows.Forms.Timer Timer1;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.ListBox listBox1;
+	}
 }
 

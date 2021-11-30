@@ -20,24 +20,29 @@ namespace Qualifying_work
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			Operator.IsPanelOpened = false;
-			Operator.Polynomials = new List<Polynomial>();
+			Operator.Functions = new List<Function>();
 			Operator.Number_Buttons = new List<Button>();
 			Operator.Function_Buttons = new List<Button>();
 			Operator.SpecialSymbols_Buttons = new List<Button>();
-			Operator.koordinationSystem = new KoordinationSystem(new Bitmap(pictureBox1.Width, pictureBox1.Height), new Area(-5, 5, -5, 5, 0.001));
+			Operator.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+			Operator.koordinationSystem = new KoordinationSystem(new Area(-5, 5, -5, 5, 1), new Area(0, pictureBox1.Width, 0, pictureBox1.Width));
 			Operator.LaunchingProgram = true;
 			Operator.Renew = true;
 			Operator.Breakets = 0;
+			Operator.Step = 0.001;
 			Timer1.Interval = 10;
 			Timer1.Start();
+			listBox1.Items.Clear();
 		}
 		private void BtnEnter_Click(object sender, EventArgs e)
 		{
 			ShowingBtn_Click(sender, e);
 			try
 			{
-				Polynomial polynomial = new Polynomial(TBFunction.Text);
-				Operator.Polynomials.Add(polynomial);
+				Function function = new Function(new Polynomial(TBFunction.Text));
+				Operator.Functions.Add(function);
+				Operator.koordinationSystem.BuildFuncton(function);
+				listBox1.Items.Add(function.ToString());
 			}
 			catch (StackOverflowException) { }
 			TBFunction.Text = "";
@@ -54,19 +59,8 @@ namespace Qualifying_work
 		{
 			if (Operator.LaunchingProgram)
 			{
-				Operator.koordinationSystem.BuildSystem();
-				//Operator.ChartArea.AxisX.Minimum = -5;
-				//Operator.ChartArea.AxisX.Maximum = 5;
-				//Operator.ChartArea.AxisX.Interval = 1;
-				//Operator.ChartArea.AxisX.ArrowStyle = AxisArrowStyle.SharpTriangle;
-				//Operator.ChartArea.AxisX.Crossing = 0;
-				//Operator.ChartArea.AxisX.LabelStyle.IsEndLabelVisible = false;
-				//Operator.ChartArea.AxisY.Minimum = -5;
-				//Operator.ChartArea.AxisY.Maximum = 5;
-				//Operator.ChartArea.AxisY.Interval = 1;
-				//Operator.ChartArea.AxisY.ArrowStyle = AxisArrowStyle.SharpTriangle;
-				//Operator.ChartArea.AxisY.Crossing = 0;
-				//Operator.ChartArea.AxisY.LabelStyle.IsEndLabelVisible = false;
+				Operator.koordinationSystem.BuildSystem(true);
+				#region fillButtons
 				Operator.Number_Buttons.Add(Btn0);
 				Operator.Number_Buttons.Add(Btn1);
 				Operator.Number_Buttons.Add(Btn2);
@@ -93,12 +87,12 @@ namespace Qualifying_work
 				Operator.Function_Buttons.Add(BtnArctg);
 				Operator.Function_Buttons.Add(BtnArcctg);
 				Operator.Number_Buttons.Add(BtnKoma);
+				#endregion
 				Operator.LaunchingProgram = false;
-				Operator.Renew = true;
 			}
 			if (Operator.Renew)
 			{
-				pictureBox1.Image = Operator.koordinationSystem.Bitmap;
+				pictureBox1.Image = Operator.Bitmap;
 				Operator.Renew = false;
 			}
 		}
@@ -176,7 +170,7 @@ namespace Qualifying_work
 			if (Operator.IsPanelOpened)
 			{
 				Operator.IsPanelOpened = false;
-				for (int i = 0; i < 22; i++)
+				for (int i = 0; i < 20; i++)
 				{
 					pnlProVersion.Location = new Point(pnlProVersion.Location.X, pnlProVersion.Location.Y + 10);
 				}
@@ -184,7 +178,7 @@ namespace Qualifying_work
 			else
 			{
 				Operator.IsPanelOpened = true;
-				for (int i = 0; i < 22; i++)
+				for (int i = 0; i < 20; i++)
 				{
 					pnlProVersion.Location = new Point(pnlProVersion.Location.X, pnlProVersion.Location.Y - 10);
 				}
@@ -454,10 +448,12 @@ namespace Qualifying_work
 		}
 		#endregion
 		#endregion
-		private void pictureBox1_Click(object sender, EventArgs e)
+		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			Operator.koordinationSystem.BuildSystem();
-			pictureBox1.Image = Operator.koordinationSystem.Bitmap;
+			Operator.currentFunctions = Operator.Functions[listBox1.SelectedIndex];
+			Operator.currentChoise = listBox1.SelectedIndex;
+			FuncActions funcActions = new FuncActions();
+			funcActions.Show();
 		}
 	}
 }
