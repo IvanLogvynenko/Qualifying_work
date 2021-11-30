@@ -239,7 +239,7 @@ namespace Qualifying_work
 		#region Trigonometry
 		private void BtnSin_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Sin(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -249,7 +249,7 @@ namespace Qualifying_work
 		}
 		private void BtnCos_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Cos(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -259,7 +259,7 @@ namespace Qualifying_work
 		}
 		private void BtnTg_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Tg(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -269,7 +269,7 @@ namespace Qualifying_work
 		}
 		private void BtnCtg_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Ctg(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -279,7 +279,7 @@ namespace Qualifying_work
 		}
 		private void BtnArcsin_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Arcsin(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -289,7 +289,7 @@ namespace Qualifying_work
 		}
 		private void BtnArccos_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Arccos(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -299,7 +299,7 @@ namespace Qualifying_work
 		}
 		private void BtnArctg_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Arctg(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -309,7 +309,7 @@ namespace Qualifying_work
 		}
 		private void BtnArcctg_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "Arcctg(";
 			Button_switcher(); BtnX.Enabled = true;
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -339,7 +339,7 @@ namespace Qualifying_work
 		}
 		private void BtnOBracket_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "(";
 			Button_switcher();
 			BtnX.Enabled = true;
@@ -350,17 +350,17 @@ namespace Qualifying_work
 		}
 		private void BtnCBracket_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets--;
+			Breakets--;
 			TBFunction.Text += ")";
 			Button_switcher(false);
-			BtnCBracket.Enabled = Operator.Breakets != 0;
+			BtnCBracket.Enabled = Breakets != 0;
 			BtnMinus.Enabled = true;
 			BtnPlus.Enabled = true;
 			BtnPower.Enabled = true;
 		}
 		private void BtnSegmentator_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "/(";
 			Button_switcher();
 			BtnX.Enabled = true;
@@ -370,7 +370,7 @@ namespace Qualifying_work
 		}
 		private void BtnPower_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "^(";
 			Button_switcher();
 			Button_switcher(SpecialSymbols_Buttons, false);
@@ -380,7 +380,7 @@ namespace Qualifying_work
 		}
 		private void BtnMultiply_Click(object sender, EventArgs e)
 		{
-			Operator.Breakets++;
+			Breakets++;
 			TBFunction.Text += "*(";
 			Button_switcher();
 			BtnX.Enabled = true;

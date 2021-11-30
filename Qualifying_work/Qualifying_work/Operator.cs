@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Qualifying_work
 {
-	//static class Operator
+	static class Operator
 	{
 		public static List<Function> Functions;
 		public static Function currentFunctions;
