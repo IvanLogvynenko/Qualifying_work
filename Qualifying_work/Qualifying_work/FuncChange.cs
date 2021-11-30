@@ -395,6 +395,7 @@ namespace Qualifying_work
 			Operator.currentFunctions = new Function(new Polynomial(TBFunction.Text));
 			Operator.Functions[Operator.currentChoise] = Operator.currentFunctions;
 			Hide();
+			Operator.koordinationSystem.Renew();
 			FuncActions funcActions = new FuncActions();
 			funcActions.Show();
 		}

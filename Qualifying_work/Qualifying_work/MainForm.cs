@@ -93,6 +93,11 @@ namespace Qualifying_work
 			if (Operator.Renew)
 			{
 				pictureBox1.Image = Operator.Bitmap;
+				listBox1.Items.Clear();
+				foreach (Function item in Operator.Functions)
+				{
+					listBox1.Items.Add(item.ToString());
+				}
 				Operator.Renew = false;
 			}
 		}

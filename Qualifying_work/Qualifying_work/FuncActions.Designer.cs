@@ -1,68 +1,68 @@
 ﻿
 namespace Qualifying_work
 {
-    partial class FuncActions
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class FuncActions
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+            this.BtnAnalize = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
+            this.BtnChange = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // BtnAnalize
             // 
-            this.button1.Location = new System.Drawing.Point(12, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 39);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Analize";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnAnalize.Location = new System.Drawing.Point(12, 35);
+            this.BtnAnalize.Name = "BtnAnalize";
+            this.BtnAnalize.Size = new System.Drawing.Size(98, 39);
+            this.BtnAnalize.TabIndex = 0;
+            this.BtnAnalize.Text = "Analize";
+            this.BtnAnalize.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // BtnDelete
             // 
-            this.button2.Location = new System.Drawing.Point(116, 35);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 39);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BtnDelete.Location = new System.Drawing.Point(116, 35);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(98, 39);
+            this.BtnDelete.TabIndex = 0;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // button3
+            // BtnChange
             // 
-            this.button3.Location = new System.Drawing.Point(220, 35);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 39);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Change";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.BtnChange.Location = new System.Drawing.Point(220, 35);
+            this.BtnChange.Name = "BtnChange";
+            this.BtnChange.Size = new System.Drawing.Size(98, 39);
+            this.BtnChange.TabIndex = 0;
+            this.BtnChange.Text = "Change";
+            this.BtnChange.UseVisualStyleBackColor = true;
+            this.BtnChange.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -79,9 +79,9 @@ namespace Qualifying_work
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 84);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnChange);
+            this.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.BtnAnalize);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FuncActions";
@@ -90,13 +90,14 @@ namespace Qualifying_work
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-    }
+		private System.Windows.Forms.Button BtnAnalize;
+		private System.Windows.Forms.Button BtnDelete;
+		private System.Windows.Forms.Button BtnChange;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button button2;
+	}
 }

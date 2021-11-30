@@ -68,6 +68,35 @@ namespace Qualifying_work
 			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
 			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
 		}
+		public void BuildSystem()
+		{
+			Graphics.Clear(Color.White);
+			Pen LinesPen = new Pen(Brushes.LightBlue, 1) { DashStyle = DashStyle.Dash };
+			for (double i = 0; i < Area.XMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i > Area.XMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i < Area.YMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			for (double i = 0; i > Area.YMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			Pen AxisPen = new Pen(Brushes.Black, 2) { StartCap = LineCap.Triangle, EndCap = LineCap.ArrowAnchor };
+			Graphics.DrawLine(AxisPen, Xtoi(Area.XMin), Ytoj(0), Xtoi(Area.XMax), Ytoj(0));
+			Graphics.DrawLine(AxisPen, Xtoi(0), Ytoj(Area.YMin), Xtoi(0), Ytoj(Area.YMax));
+			Font font = new Font("tahoma", 10, FontStyle.Regular);
+			Numbers();
+			Graphics.DrawString("0", font, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
+			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
+			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
+		}
 		public void Pi()
 		{
 			Font ftn1 = new Font("arial", 10, FontStyle.Regular);
@@ -145,6 +174,15 @@ namespace Qualifying_work
 		{
 			Pen pen = new Pen(function.Color, 3);
 			this.Graphics.DrawLines(pen, function.Points);
+			Operator.Renew = true;
+		}
+		public void Renew()
+		{
+			BuildSystem(true);
+			foreach (Function item in Operator.Functions)
+			{
+				Operator.koordinationSystem.BuildFuncton(item);
+			}
 			Operator.Renew = true;
 		}
 	}

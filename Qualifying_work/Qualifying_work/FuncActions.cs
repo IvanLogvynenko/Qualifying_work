@@ -34,9 +34,11 @@ namespace Qualifying_work
 				Hide();
 			}
 		}
-		private void button2_Click(object sender, EventArgs e)
+		private void BtnDelete_Click(object sender, EventArgs e)
 		{
-
+			Operator.Functions.Remove(Operator.currentFunctions);
+			Hide();
+			Operator.koordinationSystem.Renew();
 		}
 	}
 }
