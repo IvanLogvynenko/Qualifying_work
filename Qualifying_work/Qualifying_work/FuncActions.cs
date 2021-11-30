@@ -40,5 +40,11 @@ namespace Qualifying_work
 			Hide();
 			Operator.koordinationSystem.Renew();
 		}
+		private void BtnAnalize_Click(object sender, EventArgs e)
+		{
+			Analysis analysis = new Analysis();
+			analysis.Show();
+			Hide();
+		}
 	}
 }

@@ -451,6 +451,10 @@ namespace Qualifying_work
 				item.Enabled = true;
 			}
 		}
-		#endregion
-	}
+        #endregion
+        private void TBFunction_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

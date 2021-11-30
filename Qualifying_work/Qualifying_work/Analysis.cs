@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Qualifying_work
 {
-    public partial class Analysis : Form
-    {
-        public Analysis()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class Analysis : Form
+	{
+		public Analysis()
+		{
+			InitializeComponent();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Analizer analizer = new Analizer(Operator.currentFunctions);
+		}
+	}
 }

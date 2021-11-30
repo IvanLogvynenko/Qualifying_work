@@ -68,6 +68,7 @@
             this.TBFunction.Name = "TBFunction";
             this.TBFunction.Size = new System.Drawing.Size(426, 29);
             this.TBFunction.TabIndex = 0;
+            this.TBFunction.TextChanged += new System.EventHandler(this.TBFunction_TextChanged);
             // 
             // label1
             // 
@@ -80,7 +81,6 @@
             // 
             // BtnBackSpace
             // 
-            this.BtnBackSpace.Enabled = false;
             this.BtnBackSpace.Location = new System.Drawing.Point(391, 39);
             this.BtnBackSpace.Name = "BtnBackSpace";
             this.BtnBackSpace.Size = new System.Drawing.Size(103, 79);
@@ -378,7 +378,6 @@
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(391, 160);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 40);

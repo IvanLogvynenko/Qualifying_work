@@ -39,16 +39,17 @@ namespace Qualifying_work
             // 
             this.BtnAnalize.Location = new System.Drawing.Point(12, 35);
             this.BtnAnalize.Name = "BtnAnalize";
-            this.BtnAnalize.Size = new System.Drawing.Size(98, 39);
+            this.BtnAnalize.Size = new System.Drawing.Size(152, 39);
             this.BtnAnalize.TabIndex = 0;
             this.BtnAnalize.Text = "Analize";
             this.BtnAnalize.UseVisualStyleBackColor = true;
+            this.BtnAnalize.Click += new System.EventHandler(this.BtnAnalize_Click);
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(116, 35);
+            this.BtnDelete.Location = new System.Drawing.Point(170, 35);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(98, 39);
+            this.BtnDelete.Size = new System.Drawing.Size(147, 39);
             this.BtnDelete.TabIndex = 0;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseVisualStyleBackColor = true;
@@ -77,10 +78,10 @@ namespace Qualifying_work
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 84);
+            this.ClientSize = new System.Drawing.Size(323, 84);
+            this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnChange);
-            this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnAnalize);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
