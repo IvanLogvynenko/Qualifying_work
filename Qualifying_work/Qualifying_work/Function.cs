@@ -14,6 +14,10 @@ namespace Qualifying_work
 		readonly private SecondDerivate secondDerivate;
 		public Point[] Points;
 		public Color Color { get; set; }
+		public double YCounter(double x)
+		{
+			return this.polynomial.YCounter(x);
+		}
 		public Function(Polynomial polynomial)
 		{
 			this.polynomial = polynomial;
@@ -23,9 +27,13 @@ namespace Qualifying_work
 				this.secondDerivate = new SecondDerivate(this.derivatePolynomial);
 			}
 			List<Point> points = new List<Point>();
-			for (double x = Operator.koordinationSystem.Area.XMin; x < Operator.koordinationSystem.Area.XMax; x+=Operator.Step)
+			for (double x = Operator.koordinationSystem.Area.XMin; x < Operator.koordinationSystem.Area.XMax; x += Operator.Step)
 			{
-				points.Add(new Point(Operator.koordinationSystem.Xtoi(x), Operator.koordinationSystem.Ytoj(this.polynomial.YCounter(x))));
+				try
+				{
+					points.Add(new Point(Operator.koordinationSystem.Xtoi(x), Operator.koordinationSystem.Ytoj(this.polynomial.YCounter(x))));
+				}
+				catch (OverflowException) { }
 			}
 			this.Points = points.ToArray();
 			Random random = new Random();
