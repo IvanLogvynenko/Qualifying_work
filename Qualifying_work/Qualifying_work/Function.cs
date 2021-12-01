@@ -14,6 +14,10 @@ namespace Qualifying_work
 		readonly private SecondDerivate secondDerivate;
 		public Point[] Points;
 		public Color Color { get; set; }
+		public double DerivateCounter(double x)
+		{
+			return this.derivatePolynomial.YCounter(x);
+		}
 		public double YCounter(double x)
 		{
 			return this.polynomial.YCounter(x);

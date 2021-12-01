@@ -19,7 +19,8 @@ namespace Qualifying_work
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Analizer analizer = new Analizer(Operator.currentFunctions);
+			Analizer analizer = new Analizer(Operator.currentFunctions, new Range(-5,5));
+			label1.Text = analizer.DomainFunction + "\n" + analizer.FunctionRange;
 		}
 	}
 }

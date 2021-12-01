@@ -173,7 +173,11 @@ namespace Qualifying_work
 		public void BuildFuncton(Function function)
 		{
 			Pen pen = new Pen(function.Color, 3);
-			this.Graphics.DrawLines(pen, function.Points);
+			try
+			{
+				this.Graphics.DrawLines(pen, function.Points);
+			}
+			catch (OverflowException) { }
 			Operator.Renew = true;
 		}
 		public void Renew()
