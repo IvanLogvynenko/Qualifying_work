@@ -29,9 +29,11 @@ namespace Qualifying_work
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +75,8 @@ namespace Qualifying_work
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Analysis";
             this.Text = "Analysis";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Analysis_FormClosing);
+            this.Load += new System.EventHandler(this.Analysis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -83,5 +87,6 @@ namespace Qualifying_work
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

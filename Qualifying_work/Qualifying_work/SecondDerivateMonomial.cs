@@ -34,6 +34,10 @@ namespace Qualifying_work
 					return new SecondDerivateFunction();
 			}
 		}
+		public double YCounter(double x)
+		{
+			return this.multiplier * Math.Pow(this.function.Counter(x), this.power);
+		}
 	}
 	public class SecondDerivateFunction 
 	{

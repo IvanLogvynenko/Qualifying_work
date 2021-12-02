@@ -34,5 +34,14 @@ namespace Qualifying_work
 			}
 			return true;
 		}
+		public double YCounter(double x)
+		{
+			double answer = 0;
+			foreach (SecondDerivateMonomial item in this.secondDerivateMonomials)
+			{
+				answer += item.YCounter(x);
+			}
+			return answer;
+		}
 	}
 }

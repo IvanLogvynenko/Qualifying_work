@@ -10,170 +10,198 @@ namespace Qualifying_work
 	public class Analizer
 	{
 		public Function Function { get; }
-		private Range Range;
+		readonly private Range Range;
 		public string DomainFunction { get; }
 		public string FunctionRange { get; }
 		public string IsOdd { get; }
 		public string IntersectionAxes { get; }
-		public string InflectionPoints { get; }
 		public string Rising { get; }
 		public string Falling { get; }
+		public string HigherX { get; }
+		public string LowerX { get; }
+		private char DiscoveryMode;
 		public Analizer(Function Function, Range Range)
 		{
 			this.Function = Function;
 			this.Range = Range;
-			string s = "", s1 = "", s2 = "", s3 = "", s4 = "";
-			DomainRange(ref s, ref s1);
-			Zeros(ref s2);
-			this.DomainFunction = s;
-			this.FunctionRange = s1;
-			this.IntersectionAxes = s2;
-			this.IsOdd = IisOdd();
-			RisingFalling(ref s3, ref s4);
-			this.Rising = s3;
-			this.Falling = s4;
+			this.IntersectionAxes = "";
+			this.DiscoveryMode = 'f';
+			foreach (double item in Zeros())
+			{
+				this.IntersectionAxes += $"{item}, ";
+			}
+			this.HigherX = "f(x)>0: " + Interpretator(Plus(Zeros())) + "\n";
+			this.LowerX = "f(x)<0: " + Interpretator(Minus(Zeros())) + "\n";
+			//string s = "", s1 = "", s2 = "", s3 = "", s4 = "";
+			//DomainRange(ref s, ref s1);
+			//Zeros(ref s2);
+			//this.DomainFunction = s;
+			//this.FunctionRange = s1;
+			//this.IntersectionAxes = s2;
+			//this.IsOdd = IisOdd();
+			//RisingFalling(ref s3, ref s4);
+			//this.Rising = s3;
+			//this.Falling = s4;
 		}
-		private void RisingFalling(ref string rising, ref string falling)
+		private string Interpretator(Range[] ranges)
 		{
-			List<Range> Rising = new List<Range>();
-			List<Range> Falling = new List<Range>();
-			PlusMinus(ref Rising, ref Falling, StartswithMinus());
-			rising = "rising on interval";
-			falling = "falling on interval";
-			foreach (Range item in Rising)
+			string s;
+			if (ranges.Length == 0)
 			{
-				rising += $"({item.Start}, {item.End})U";
+				s = "(-∞; +∞)";
 			}
-			char[] c = rising.ToCharArray();
-			rising = "";
-			c[c.Length - 1] = ';';
-			foreach (char item in c)
+			else
 			{
-				rising += item.ToString();
-			}
-			foreach (Range item in Falling)
-			{
-				falling += $"({item.Start}, {item.End})U";
-			}
-			char[] cm = rising.ToCharArray();
-			falling = "";
-			cm[cm.Length - 1] = ';';
-			foreach (char item in cm)
-			{
-				falling += item.ToString();
-			}
-		}
-		private bool StartswithMinus()
-		{
-			bool IsMin = true, start = true;
-			for (int i = 0; start; i++)
-			{
-				if (this.Function.DerivateCounter(this.Range.Start) != 0)
+				s = "";
+				foreach (Range item in ranges)
 				{
-					if (this.Function.DerivateCounter(this.Range.Start) > 0)
+					s += $"({Math.Round(item.Start)}; {Math.Round(item.End)})U";
+				}
+				s = Operator.BackSpace(s);
+				s += ";";
+			}
+			s = s.Replace($"({this.Range.Start-1};", "(-∞;");
+			s = s.Replace($"; {this.Range.End + 1})", "; +∞)");
+			return s;
+		}
+		private double Counter(double x)
+		{
+			double value = this.Range.Start - 1;
+			x = Math.Round(x, 6);
+			switch (this.DiscoveryMode)
+			{
+				case 'f':
+					value = this.Function.YCounter(x);
+					break;
+				case 'd':
+					value = this.Function.DerivateCounter(x);
+					break;
+				case 's':
+					value = this.Function.SecondDerivateCounter(x);
+					break;
+				default:
+					break;
+			}
+			return Math.Round(value, 6);
+		}
+		private double[] Zeros()
+		{
+			List<double> zeros = new List<double>();
+			for (double i = this.Range.Start; i < this.Range.End; i += Operator.Step)
+			{
+				if (Counter(i) == 0)
+				{
+					zeros.Add(Math.Round(i, 6));
+				}
+			}
+			return zeros.ToArray();
+		}
+		private Range[] Plus(double[] zeros)
+		{
+			List<Range> ranges = new List<Range>();
+			int starter = 0;
+			if (Counter(zeros[0] + 0.005)<0)
+			{
+				ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
+				starter++;
+			}
+			for (int i = starter; i < zeros.Length; i++)
+			{
+				double d = Counter(zeros[i] + 0.0005);
+				if (d>0)
+				{
+					if (i == zeros.Length-1)
 					{
-						IsMin = false;
+						ranges.Add(new Range(zeros[i], this.Range.End + 1));
 					}
 					else
 					{
-						IsMin = true;
+						ranges.Add(new Range(zeros[i], zeros[i + 1]));
 					}
-					start = false;
 				}
 			}
-			return IsMin;
+			return ranges.ToArray();
 		}
-		private void PlusMinus(ref List<Range> Plus, ref List<Range> Minus, bool minus)
+		private Range[] Minus(double[] zeros)
 		{
-			double memory = -5;
-			for (double i = this.Range.Start + Operator.koordinationSystem.Area.Step; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
+			List<Range> ranges = new List<Range>();
+			int starter = 0;
+			if (Counter(zeros[0] + 0.005) > 0)
 			{
-				if (this.Function.DerivateCounter(i) > 0)
+				ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
+				starter++;
+			}
+			for (int i = starter; i < zeros.Length; i++)
+			{
+				double d = Counter(zeros[i] + 0.0005);
+				if (d < 0)
 				{
-					if (minus)
+					if (i == zeros.Length - 1)
 					{
-						minus = false;
-						Minus.Add(new Range(memory, i));
-						memory = i;
+						ranges.Add(new Range(zeros[i], this.Range.End + 1));
 					}
-				}
-				else
-				{
-					if (!minus)
+					else
 					{
-						minus = true;
-						Plus.Add(new Range(memory, i));
-						memory = i;
+						ranges.Add(new Range(zeros[i], zeros[i + 1]));
 					}
 				}
 			}
+			return ranges.ToArray();
 		}
-		private void DomainRange(ref string answer, ref string answerr)
-		{
-			List<Range> Points = new List<Range>();
-			double memory = Double.NaN;
-			bool changer = false;
-			for (double i = this.Range.Start; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
-			{
-				if (Exists(i))
-				{
-					if (!changer)
-					{
-						changer = false;
-						memory = i;
-					}
-				}
-				else
-				{
-					if (changer)
-					{
-						changer = true;
-						Points.Add(new Range(Math.Round(memory), Math.Round(i)));
-					}
-				}
-			}
-			answer = "D(f): ";
-			for (int i = 0; i < Points.Count; i++)
-			{
-				if (i == Points.Count - 1)
-				{
-					answer += $"({Points[i].Start}; {Points[i].End})";
-				}
-				else
-				{
-					answer += $"({Points[i].Start}; {Points[i].End})U";
-				}
-			}
-			answerr = "E(f): ";
-			for (int i = 0; i < Points.Count; i++)
-			{
-				if (i == Points.Count - 1)
-				{
-					answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})";
-				}
-				else
-				{
-					answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})U";
-				}
-			}
-			if (Points.Count == 0)
-			{
-				answer += "(-∞; +∞)";
-				answerr += "(-∞; +∞)";
-			}
-		}
-		private bool Exists(double x)
-		{
-			try
-			{
-				this.Function.YCounter(x);
-				return true;
-			}
-			catch (OverflowException)
-			{
-				return false;
-			}
-		}
+		//private void DomainRange(ref string answer, ref string answerr)
+		//{
+		//	List<Range> Points = new List<Range>();
+		//	double memory = Double.NaN;
+		//	bool changer = false;
+		//	for (double i = this.Range.Start; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
+		//	{
+		//		if (Exists(i))
+		//		{
+		//			if (!changer)
+		//			{
+		//				changer = false;
+		//				memory = i;
+		//			}
+		//		}
+		//		else
+		//		{
+		//			if (changer)
+		//			{
+		//				changer = true;
+		//				Points.Add(new Range(Math.Round(memory), Math.Round(i)));
+		//			}
+		//		}
+		//	}
+		//	answer = "D(f): ";
+		//	for (int i = 0; i < Points.Count; i++)
+		//	{
+		//		if (i == Points.Count - 1)
+		//		{
+		//			answer += $"({Points[i].Start}; {Points[i].End})";
+		//		}
+		//		else
+		//		{
+		//			answer += $"({Points[i].Start}; {Points[i].End})U";
+		//		}
+		//	}
+		//	answerr = "E(f): ";
+		//	for (int i = 0; i < Points.Count; i++)
+		//	{
+		//		if (i == Points.Count - 1)
+		//		{
+		//			answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})";
+		//		}
+		//		else
+		//		{
+		//			answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})U";
+		//		}
+		//	}
+		//	if (Points.Count == 0)
+		//	{
+		//		answer += "(-∞; +∞)";
+		//		answerr += "(-∞; +∞)";
+		//	}
+		//}
 		private string IisOdd()
 		{
 			bool isOdd = true;
@@ -209,18 +237,6 @@ namespace Qualifying_work
 					return "Is Indifferent";
 				}
 			}
-		}
-		private void Zeros(ref string zero)
-		{
-			zero = "function zeros: ";
-			for (double i = this.Range.Start; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
-			{
-				if (Math.Round(this.Function.YCounter(i), 2) == 0)
-				{
-					zero += $"({i}, {Math.Round(this.Function.YCounter(i), 2)})";
-				}
-			}
-			zero += $"(0, {Math.Round(this.Function.YCounter(0), 2)})";
 		}
 	}
 	public class Range
