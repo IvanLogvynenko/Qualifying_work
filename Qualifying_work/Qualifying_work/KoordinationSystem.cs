@@ -97,6 +97,73 @@ namespace Qualifying_work
 			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
 			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
 		}
+		public void BuildSystem(bool points, Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			Graphics.Clear(Color.White);
+			Pen LinesPen = new Pen(Brushes.LightBlue, 1) { DashStyle = DashStyle.Dash };
+			for (double i = 0; i < Area.XMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i > Area.XMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i < Area.YMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			for (double i = 0; i > Area.YMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			Pen AxisPen = new Pen(Brushes.Black, 2) { StartCap = LineCap.Triangle, EndCap = LineCap.ArrowAnchor };
+			Graphics.DrawLine(AxisPen, Xtoi(Area.XMin), Ytoj(0), Xtoi(Area.XMax), Ytoj(0));
+			Graphics.DrawLine(AxisPen, Xtoi(0), Ytoj(Area.YMin), Xtoi(0), Ytoj(Area.YMax));
+			Font font = new Font("tahoma", 10, FontStyle.Regular);
+			if (points)
+			{
+				Numbers(bitmap);
+			}
+			else
+			{
+				Pi(bitmap);
+			}
+			Graphics.DrawString("0", font, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
+			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
+			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
+		}
+		public void BuildSystem(Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			Graphics.Clear(Color.White);
+			Pen LinesPen = new Pen(Brushes.LightBlue, 1) { DashStyle = DashStyle.Dash };
+			for (double i = 0; i < Area.XMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i > Area.XMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(i), Ytoj(Area.YMax), Xtoi(i), Ytoj(Area.YMin));
+			}
+			for (double i = 0; i < Area.YMax; i += Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			for (double i = 0; i > Area.YMin; i -= Area.Step)
+			{
+				Graphics.DrawLine(LinesPen, Xtoi(Area.XMin), Ytoj(i), Xtoi(Area.XMax), Ytoj(i));
+			}
+			Pen AxisPen = new Pen(Brushes.Black, 2) { StartCap = LineCap.Triangle, EndCap = LineCap.ArrowAnchor };
+			Graphics.DrawLine(AxisPen, Xtoi(Area.XMin), Ytoj(0), Xtoi(Area.XMax), Ytoj(0));
+			Graphics.DrawLine(AxisPen, Xtoi(0), Ytoj(Area.YMin), Xtoi(0), Ytoj(Area.YMax));
+			Font font = new Font("tahoma", 10, FontStyle.Regular);
+			Numbers(bitmap);
+			Graphics.DrawString("0", font, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
+			Graphics.DrawString("Y", font, Brushes.DarkBlue, new Point(Xtoi(0.3), Ytoj(Area.XMax - 0.3)));
+			Graphics.DrawString("X", font, Brushes.DarkBlue, new Point(Xtoi(Area.YMax - 0.3), Ytoj(0.5)));
+		}
 		public void Pi()
 		{
 			Font ftn1 = new Font("arial", 10, FontStyle.Regular);
@@ -170,6 +237,81 @@ namespace Qualifying_work
 			}
 			Graphics.DrawString("0", ftn1, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
 		}
+		public void Pi(Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			Font ftn1 = new Font("arial", 10, FontStyle.Regular);
+			string s = "";
+			for (int p = 1; p <= Area.XMax; p++)
+			{
+				if (p != 1)
+				{
+					if (p % 2 == 0)
+					{
+						s = (p / 2).ToString() + "π";
+					}
+					else
+					{
+						s = p.ToString() + "π/2";
+					}
+				}
+				else
+				{
+					s = "π/2";
+				}
+				Graphics.DrawString(s, ftn1, Brushes.DarkBlue, new Point(Xtoi(p * (Math.PI / 2) - 0.3), Ytoj(-0.4)));
+			}
+			for (int p = -1; p >= Area.XMin; p--)
+			{
+				if (p != -1)
+				{
+					if (p % 2 == 0)
+					{
+						s = (p / 2).ToString() + "π";
+					}
+					else
+					{
+						s = p.ToString() + "π/2";
+					}
+				}
+				else
+				{
+					s = "-π/2";
+				}
+				Graphics.DrawString(s, ftn1, Brushes.DarkBlue, new Point(Xtoi(p * (Math.PI / 2) - 0.3), Ytoj(-0.4)));
+			}
+			for (int p = 1; p <= Area.YMax; p++)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(-0.3), Ytoj(p + 0.3)));
+			}
+			for (int p = -1; p >= Area.YMin; p--)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(-0.3), Ytoj(p + 0.3)));
+			}
+			Graphics.DrawString("0", ftn1, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
+		}
+		public void Numbers(Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			Font ftn1 = new Font("arial", 10, FontStyle.Regular);
+			for (double p = Area.Step; p <= Area.XMax; p += Area.Step)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(p - 0.3), Ytoj(-0.1)));
+			}
+			for (double p = -1 * Area.Step; p >= Area.XMin; p -= Area.Step)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(p - 0.3), Ytoj(-0.1)));
+			}
+			for (double p = Area.Step; p <= Area.YMax; p += Area.Step)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(-0.3), Ytoj(p + 0.3)));
+			}
+			for (double p = -1 * Area.Step; p >= Area.YMin; p -= Area.Step)
+			{
+				Graphics.DrawString(p.ToString(), ftn1, Brushes.DarkBlue, new Point(Xtoi(-0.3), Ytoj(p + 0.3)));
+			}
+			Graphics.DrawString("0", ftn1, Brushes.DarkBlue, new Point(Xtoi(0.2), Ytoj(0.5)));
+		}
 		public void BuildFuncton(Function function)
 		{
 			Pen pen = new Pen(function.Color, 3);
@@ -178,7 +320,46 @@ namespace Qualifying_work
 				this.Graphics.DrawLines(pen, function.Points);
 			}
 			catch (OverflowException) { }
-			Operator.Renew = true;
+		}
+		public void BuildFuncton(Function function, Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			Pen pen = new Pen(function.Color, 3);
+			try
+			{
+				Graphics.DrawLines(pen, function.Points);
+			}
+			catch (OverflowException) { }
+		}
+		public void BuildDerivate(Function function, Bitmap bitmap)
+		{
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			List<Point> points = new List<Point>();
+			for (double i = this.Area.XMin; i < this.Area.XMax; i+=Operator.Step)
+			{
+				points.Add(new Point(Xtoi(i), Ytoj(function.DerivateCounter(i))));
+			}
+			Pen pen = new Pen(Operator.RandomColor(), 3);
+			try
+			{
+				Graphics.DrawLines(pen, points.ToArray());
+			}
+			catch (OverflowException) { }
+		}
+		public void BuildSecondDerivate(Function function, Bitmap bitmap)
+		{
+			List<Point> points = new List<Point>();
+			Graphics Graphics = Graphics.FromImage(bitmap);
+			for (double i = this.Area.XMin; i < this.Area.XMax; i += Operator.Step)
+			{
+				points.Add(new Point(Xtoi(i), Ytoj(function.SecondDerivateCounter(i))));
+			}
+			Pen pen = new Pen(Operator.RandomColor(), 3);
+			try
+			{
+				Graphics.DrawLines(pen, points.ToArray());
+			}
+			catch (OverflowException) { }
 		}
 		public void Renew()
 		{

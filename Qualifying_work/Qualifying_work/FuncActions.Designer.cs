@@ -99,6 +99,5 @@ namespace Qualifying_work
 		private System.Windows.Forms.Button BtnDelete;
 		private System.Windows.Forms.Button BtnChange;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button2;
 	}
 }

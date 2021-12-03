@@ -41,7 +41,7 @@ namespace Qualifying_work
 			}
 			this.Points = points.ToArray();
 			Random random = new Random();
-			this.Color = Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+			this.Color = Operator.RandomColor();
 		}
 		public override string ToString()
 		{

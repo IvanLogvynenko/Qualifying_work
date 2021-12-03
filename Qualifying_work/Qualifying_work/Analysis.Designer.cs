@@ -63,6 +63,11 @@ namespace Qualifying_work
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Analysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -77,6 +82,7 @@ namespace Qualifying_work
             this.Text = "Analysis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Analysis_FormClosing);
             this.Load += new System.EventHandler(this.Analysis_Load);
+            this.SizeChanged += new System.EventHandler(this.Analysis_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

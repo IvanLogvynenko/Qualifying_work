@@ -26,6 +26,11 @@ namespace Qualifying_work
 		#region logical params(for background operating)
 		public static bool LaunchingProgram, Renew, IsPanelOpened;
 		#endregion
+		public static Color RandomColor()
+		{
+			Random random = new Random();
+			return Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+		}
 		public static string BackSpace(string inputText)
 		{
 			char[] chars = inputText.ToCharArray();

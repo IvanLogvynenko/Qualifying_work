@@ -33,6 +33,15 @@ namespace Qualifying_work
 			Timer1.Interval = 10;
 			Timer1.Start();
 			listBox1.Items.Clear();
+			pictureBox1.MouseWheel += PictureBox1_MouseWheel;
+		}
+		private void PictureBox1_MouseWheel(object sender, MouseEventArgs e)
+		{
+			Operator.koordinationSystem.Area.XMin += 0.2 * e.Delta / 120;
+			Operator.koordinationSystem.Area.XMax -= 0.2 * e.Delta / 120;
+			Operator.koordinationSystem.Area.YMin += 0.2 * e.Delta / 120;
+			Operator.koordinationSystem.Area.YMax -= 0.2 * e.Delta / 120;
+			Operator.koordinationSystem.Renew();
 		}
 		private void BtnEnter_Click(object sender, EventArgs e)
 		{
@@ -46,6 +55,7 @@ namespace Qualifying_work
 			}
 			catch (StackOverflowException) { }
 			TBFunction.Text = "";
+			Operator.Renew = true;
 			Operator.Button_switcher();
 			BtnX.Enabled = true;
 			BtnPlus.Enabled = false;

@@ -15,33 +15,32 @@ namespace Qualifying_work
 		public string FunctionRange { get; }
 		public string IsOdd { get; }
 		public string IntersectionAxes { get; }
-		public string Rising { get; }
-		public string Falling { get; }
 		public string HigherX { get; }
 		public string LowerX { get; }
+		public string Extrem { get; }
+		public string Rising { get; }
+		public string Falling { get; }
+		public string InflectionPoints { get; }
+		public string InflectionPlus { get; }
+		public string InflectionMinus { get; }
 		private char DiscoveryMode;
 		public Analizer(Function Function, Range Range)
 		{
 			this.Function = Function;
 			this.Range = Range;
-			this.IntersectionAxes = "";
 			this.DiscoveryMode = 'f';
-			foreach (double item in Zeros())
-			{
-				this.IntersectionAxes += $"{item}, ";
-			}
+			this.IntersectionAxes = "Points of intersection with axes: " + Interpretator(Zeros()) + "\n";
 			this.HigherX = "f(x)>0: " + Interpretator(Plus(Zeros())) + "\n";
 			this.LowerX = "f(x)<0: " + Interpretator(Minus(Zeros())) + "\n";
-			//string s = "", s1 = "", s2 = "", s3 = "", s4 = "";
-			//DomainRange(ref s, ref s1);
-			//Zeros(ref s2);
-			//this.DomainFunction = s;
-			//this.FunctionRange = s1;
-			//this.IntersectionAxes = s2;
-			//this.IsOdd = IisOdd();
-			//RisingFalling(ref s3, ref s4);
-			//this.Rising = s3;
-			//this.Falling = s4;
+			this.DiscoveryMode = 'd';
+			this.Extrem = "Extremal points: " + Interpretator(Zeros()) + "\n";
+			this.Rising = "f(x)↑: " + Interpretator(Plus(Zeros())) + "\n";
+			this.Falling = "f(x)↓: " + Interpretator(Minus(Zeros())) + "\n";
+			this.DiscoveryMode = 's';
+			this.InflectionPoints = "Extremal points: " + Interpretator(Zeros()) + "\n";
+			this.InflectionPlus = "Inflects inside: " + Interpretator(Plus(Zeros())) + "\n";
+			this.InflectionMinus = "Inflects outside: " + Interpretator(Minus(Zeros())) + "\n";
+			this.IsOdd = IisOdd() + "\n";
 		}
 		private string Interpretator(Range[] ranges)
 		{
@@ -62,6 +61,18 @@ namespace Qualifying_work
 			}
 			s = s.Replace($"({this.Range.Start-1};", "(-∞;");
 			s = s.Replace($"; {this.Range.End + 1})", "; +∞)");
+			return s;
+		}
+		private string Interpretator(double[] zeros)
+		{
+			string s;
+			s = "";
+			foreach (double item in zeros)
+			{
+				s += $"{item}, ";
+			}
+			s = Operator.BackSpace(Operator.BackSpace(s));
+			s += ";";
 			return s;
 		}
 		private double Counter(double x)
@@ -100,23 +111,26 @@ namespace Qualifying_work
 		{
 			List<Range> ranges = new List<Range>();
 			int starter = 0;
-			if (Counter(zeros[0] + 0.005)<0)
+			if (zeros.Length != 0)
 			{
-				ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
-				starter++;
-			}
-			for (int i = starter; i < zeros.Length; i++)
-			{
-				double d = Counter(zeros[i] + 0.0005);
-				if (d>0)
+				if (Counter(zeros[0] + 0.005) < 0)
 				{
-					if (i == zeros.Length-1)
+					ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
+					starter++;
+				}
+				for (int i = starter; i < zeros.Length; i++)
+				{
+					double d = Counter(zeros[i] + 0.0005);
+					if (d > 0)
 					{
-						ranges.Add(new Range(zeros[i], this.Range.End + 1));
-					}
-					else
-					{
-						ranges.Add(new Range(zeros[i], zeros[i + 1]));
+						if (i == zeros.Length - 1)
+						{
+							ranges.Add(new Range(zeros[i], this.Range.End + 1));
+						}
+						else
+						{
+							ranges.Add(new Range(zeros[i], zeros[i + 1]));
+						}
 					}
 				}
 			}
@@ -126,23 +140,26 @@ namespace Qualifying_work
 		{
 			List<Range> ranges = new List<Range>();
 			int starter = 0;
-			if (Counter(zeros[0] + 0.005) > 0)
+			if (zeros.Length != 0)
 			{
-				ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
-				starter++;
-			}
-			for (int i = starter; i < zeros.Length; i++)
-			{
-				double d = Counter(zeros[i] + 0.0005);
-				if (d < 0)
+				if (Counter(zeros[0] + 0.005) > 0)
 				{
-					if (i == zeros.Length - 1)
+					ranges.Add(new Range(this.Range.Start - 1, zeros[0]));
+					starter++;
+				}
+				for (int i = starter; i < zeros.Length; i++)
+				{
+					double d = Counter(zeros[i] + 0.0005);
+					if (d < 0)
 					{
-						ranges.Add(new Range(zeros[i], this.Range.End + 1));
-					}
-					else
-					{
-						ranges.Add(new Range(zeros[i], zeros[i + 1]));
+						if (i == zeros.Length - 1)
+						{
+							ranges.Add(new Range(zeros[i], this.Range.End + 1));
+						}
+						else
+						{
+							ranges.Add(new Range(zeros[i], zeros[i + 1]));
+						}
 					}
 				}
 			}
