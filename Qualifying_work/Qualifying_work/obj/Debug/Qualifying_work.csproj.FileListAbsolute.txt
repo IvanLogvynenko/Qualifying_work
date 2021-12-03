@@ -21,3 +21,5 @@ D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.Analysis.resources
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.FuncActions.resources
 D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.FuncChange.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.Start.resources
+D:\мои коды\C#\Qualifying_work\Qualifying_work\Qualifying_work\obj\Debug\Qualifying_work.Theory.resources
