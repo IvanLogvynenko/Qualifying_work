@@ -86,6 +86,7 @@ namespace Qualifying_work
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FuncActions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FuncActions_FormClosing);
             this.Load += new System.EventHandler(this.FuncActions_Load);
             this.ResumeLayout(false);

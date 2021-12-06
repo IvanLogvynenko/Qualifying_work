@@ -62,6 +62,7 @@ namespace Qualifying_work
 			{
 				e.Cancel = true;
 				Hide();
+				Operator.IsFucnChangeOpened = false;
 			}
 		}
 		private void BtnBackSpace_Click(object sender, EventArgs e)

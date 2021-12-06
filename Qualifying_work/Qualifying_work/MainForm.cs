@@ -213,7 +213,7 @@ namespace Qualifying_work
 		private void Btn0_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += '0'.ToString();
-			Operator.Button_switcher(); 
+			Operator.Button_switcher();
 			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			BtnMultiply.Enabled = false;
@@ -222,14 +222,14 @@ namespace Qualifying_work
 		private void BtnKoma_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += ",";
-			Operator.Button_switcher(); 
+			Operator.Button_switcher();
 			BtnX.Enabled = false;
 			Operator.Button_switcher(Operator.Number_Buttons, true);
 		}
 		private void Btn1_Click(object sender, EventArgs e)
 		{
 			TBFunction.Text += "1";
-			Operator.Button_switcher(); 
+			Operator.Button_switcher();
 			BtnX.Enabled = true;
 			Operator.Button_switcher(Operator.Function_Buttons, false);
 			Operator.Button_switcher(Operator.Number_Buttons, true);
@@ -468,7 +468,20 @@ namespace Qualifying_work
 			Operator.currentFunctions = Operator.Functions[listBox1.SelectedIndex];
 			Operator.currentChoise = listBox1.SelectedIndex;
 			FuncActions funcActions = new FuncActions();
-			funcActions.Show();
+			if (!Operator.IsFuncActionOpened)
+			{
+				funcActions.Show();
+			}
+			Operator.IsFuncActionOpened = true;
+		}
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (e.CloseReason == CloseReason.UserClosing)
+			{
+				e.Cancel = true;
+				Hide();
+				Operator.IsMainFormOpened = false;
+			}
 		}
 	}
 }

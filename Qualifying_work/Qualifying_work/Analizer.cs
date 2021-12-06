@@ -167,57 +167,57 @@ namespace Qualifying_work
 		}
 		//private void DomainRange(ref string answer, ref string answerr)
 		//{
-		//	List<Range> Points = new List<Range>();
-		//	double memory = Double.NaN;
-		//	bool changer = false;
-		//	for (double i = this.Range.Start; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
-		//	{
-		//		if (Exists(i))
-		//		{
-		//			if (!changer)
-		//			{
-		//				changer = false;
-		//				memory = i;
-		//			}
-		//		}
-		//		else
-		//		{
-		//			if (changer)
-		//			{
-		//				changer = true;
-		//				Points.Add(new Range(Math.Round(memory), Math.Round(i)));
-		//			}
-		//		}
-		//	}
-		//	answer = "D(f): ";
-		//	for (int i = 0; i < Points.Count; i++)
-		//	{
-		//		if (i == Points.Count - 1)
-		//		{
-		//			answer += $"({Points[i].Start}; {Points[i].End})";
-		//		}
-		//		else
-		//		{
-		//			answer += $"({Points[i].Start}; {Points[i].End})U";
-		//		}
-		//	}
-		//	answerr = "E(f): ";
-		//	for (int i = 0; i < Points.Count; i++)
-		//	{
-		//		if (i == Points.Count - 1)
-		//		{
-		//			answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})";
-		//		}
-		//		else
-		//		{
-		//			answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})U";
-		//		}
-		//	}
-		//	if (Points.Count == 0)
-		//	{
-		//		answer += "(-∞; +∞)";
-		//		answerr += "(-∞; +∞)";
-		//	}
+		//    List<Range> Points = new List<Range>();
+		//    double memory = Double.NaN;
+		//    bool changer = false;
+		//    for (double i = this.Range.Start; i < this.Range.End; i += Operator.koordinationSystem.Area.Step)
+		//    {
+		//        if (Exists(i))
+		//        {
+		//            if (!changer)
+		//            {
+		//                changer = false;
+		//                memory = i;
+		//            }
+		//        }
+		//        else
+		//        {
+		//            if (changer)
+		//            {
+		//                changer = true;
+		//                Points.Add(new Range(Math.Round(memory), Math.Round(i)));
+		//            }
+		//        }
+		//    }
+		//    answer = "D(f): ";
+		//    for (int i = 0; i < Points.Count; i++)
+		//    {
+		//        if (i == Points.Count - 1)
+		//        {
+		//            answer += $"({Points[i].Start}; {Points[i].End})";
+		//        }
+		//        else
+		//        {
+		//            answer += $"({Points[i].Start}; {Points[i].End})U";
+		//        }
+		//    }
+		//    answerr = "E(f): ";
+		//    for (int i = 0; i < Points.Count; i++)
+		//    {
+		//        if (i == Points.Count - 1)
+		//        {
+		//            answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})";
+		//        }
+		//        else
+		//        {
+		//            answer += $"({this.Function.YCounter(Points[i].Start)}; {this.Function.YCounter(Points[i].End)})U";
+		//        }
+		//    }
+		//    if (Points.Count == 0)
+		//    {
+		//        answer += "(-∞; +∞)";
+		//        answerr += "(-∞; +∞)";
+		//    }
 		//}
 		private string IisOdd()
 		{

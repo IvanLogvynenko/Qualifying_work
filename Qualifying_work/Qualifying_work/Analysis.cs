@@ -41,11 +41,13 @@ namespace Qualifying_work
 			{
 				e.Cancel = true;
 				Hide();
+				Operator.IsAnalysisOpened = false;
 			}
 		}
 		private void Analysis_Load(object sender, EventArgs e)
 		{
 			bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+			timer1.Stop();
 			koordinationSystem = new KoordinationSystem(new Area(-5, 5, -5, 5, 1), new Area(0, pictureBox1.Width, 0, pictureBox1.Height));
 			timer1.Interval = 1;
 			timer1.Start();
@@ -62,9 +64,9 @@ namespace Qualifying_work
 				start = false;
 			}
 		}
-        private void Analysis_SizeChanged(object sender, EventArgs e)
-        {
+		private void Analysis_SizeChanged(object sender, EventArgs e)
+		{
 			label1.Size = new Size(label1.Size.Width, this.Height - 40);
-        }
-    }
+		}
+	}
 }

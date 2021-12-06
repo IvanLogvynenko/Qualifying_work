@@ -9,7 +9,7 @@ namespace Qualifying_work
 {
 	public class Polynomial
 	{
-        public Monomial[] Monomials { get; }
+		public Monomial[] Monomials { get; }
 		public string PolynomialText { get; }
 		public Polynomial(string input)
 		{

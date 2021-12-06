@@ -19,12 +19,20 @@ namespace Qualifying_work
 		private void button1_Click(object sender, EventArgs e)
 		{
 			Theory theory = new Theory();
-			theory.Show();
+			if (!Operator.IsTheoryOpened)
+			{
+				theory.Show();
+			}
+			Operator.IsTheoryOpened = true;
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
 			MainForm mainForm = new MainForm();
-			mainForm.Show();
+			if (!Operator.IsMainFormOpened)
+			{
+				mainForm.Show();
+			}
+			Operator.IsMainFormOpened = true;
 		}
 	}
 }

@@ -48,8 +48,15 @@ namespace Qualifying_work
 			return $"y = {this.polynomial.PolynomialText}";
 		}
 		public double SecondDerivateCounter(double x)
-        {
-			return this.secondDerivate.YCounter(x);
-        }
+		{
+			if (SecondDerivate.IsAbleToBeFinished(this.derivatePolynomial))
+			{
+				return this.secondDerivate.YCounter(x);
+			}
+			else
+			{
+				return 0;
+			}
+		}
 	}
 }

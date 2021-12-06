@@ -32,6 +32,7 @@ namespace Qualifying_work
 			{
 				e.Cancel = true;
 				Hide();
+				Operator.IsFuncActionOpened = false;
 			}
 		}
 		private void BtnDelete_Click(object sender, EventArgs e)
@@ -42,9 +43,12 @@ namespace Qualifying_work
 		}
 		private void BtnAnalize_Click(object sender, EventArgs e)
 		{
-			Analysis analysis = new Analysis();
-			analysis.Show();
-			Hide();
+			if (!Operator.IsAnalysisOpened)
+			{
+				Analysis analysis = new Analysis();
+				analysis.Show();
+			}
+			Operator.IsAnalysisOpened = true;
 		}
 	}
 }

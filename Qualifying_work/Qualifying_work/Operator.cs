@@ -26,6 +26,9 @@ namespace Qualifying_work
 		#region logical params(for background operating)
 		public static bool LaunchingProgram, Renew, IsPanelOpened;
 		#endregion
+		#region Is...Opened
+		public static bool IsStartOpened = true, IsTheoryOpened = false, IsAnalysisOpened = false, IsFuncActionOpened = false, IsFucnChangeOpened = false, IsMainFormOpened = false;
+		#endregion
 		public static Color RandomColor()
 		{
 			Random random = new Random();

@@ -16,16 +16,18 @@ namespace Qualifying_work
 		{
 			InitializeComponent();
 		}
-		int i = 1;
-		private void timer1_Tick(object sender, EventArgs e)
+		private void Theory_Load(object sender, EventArgs e)
 		{
-			if (i == 3)
+			webBrowser1.Navigate($@"{Application.StartupPath}/theory.html");
+		}
+		private void Theory_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (e.CloseReason == CloseReason.UserClosing)
 			{
-				label1.Text = "загрузка";
-				i = 0;
+				e.Cancel = true;
+				Hide();
+				Operator.IsTheoryOpened = false;
 			}
-			label1.Text += '.';
-			i++;
 		}
 	}
 }
