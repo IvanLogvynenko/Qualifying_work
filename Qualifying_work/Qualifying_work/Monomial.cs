@@ -13,7 +13,6 @@ namespace Qualifying_work
 		readonly private CountingFunction function;
 		readonly private Polynomial innerPolynomial;
 		readonly private bool isEnd;
-		//readonly private bool IsSegmentated;
 		public double Multiplier { get { return multiplier; } }
 		public double Power { get { return power; } }
 		public Polynomial InnerPolynomial { get { return innerPolynomial; } }
@@ -203,7 +202,6 @@ namespace Qualifying_work
 							break;
 						}
 					}
-
 					if (item == 'x' && breckets == 0)
 					{
 						answer = input;
